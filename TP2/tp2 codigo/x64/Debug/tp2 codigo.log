@@ -1,0 +1,16 @@
+﻿  COMESTIBLES.cpp
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\COMESTIBLES.cpp(8,14): error C2084: la función 'COMESTIBLES::COMESTIBLES(CATEGORIA,unsigned int,float,std::string,std::string,std::string,std::string,time_t)' ya tiene un cuerpo
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\COMESTIBLES.h(15,5): message : vea la definición anterior de '{ctor}'
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\COMESTIBLES.cpp(14,14): error C2084: la función 'COMESTIBLES::COMESTIBLES(void)' ya tiene un cuerpo
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\COMESTIBLES.h(14,5): message : vea la definición anterior de '{ctor}'
+  DISFRACES.cpp
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\DISFRACES.cpp(9,13): error C2084: la función 'DISFRACES::DISFRACES(CATEGORIA,unsigned int,float,std::string,std::string,std::string,time_t,time_t,time_t,ESTADO,TALLE)' ya tiene un cuerpo
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\DISFRACES.h(17,5): message : vea la definición anterior de '{ctor}'
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\DISFRACES.cpp(20,13): error C2084: la función 'DISFRACES::DISFRACES(void)' ya tiene un cuerpo
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\DISFRACES.h(19,5): message : vea la definición anterior de '{ctor}'
+  UTENSILIOS.cpp
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\UTENSILIOS.cpp(8,13): error C2084: la función 'UTENSILIOS::UTENSILIOS(CATEGORIA,unsigned int,float,std::string,std::string,std::string,MATERIAL,int,TAMANIO)' ya tiene un cuerpo
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\UTENSILIOS.h(17,5): message : vea la definición anterior de '{ctor}'
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\UTENSILIOS.cpp(16,13): error C2084: la función 'UTENSILIOS::UTENSILIOS(void)' ya tiene un cuerpo
+C:\Users\Isabella\Desktop\Facultad\LP1\TP2\Model\UTENSILIOS.h(19,2): message : vea la definición anterior de '{ctor}'
+  Generando código...
