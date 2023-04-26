@@ -58,16 +58,17 @@ vector<PRODUCTO> EMPLEADO::buscar_productos_clientes(CLIENTE cliente)
 	vector<PRODUCTO>lista_final;
 	for (i = 0; i < this->lista_productos.size(); i++) {
 		for (j = 0; j < cliente.get_alias_productos().size(); j++) {
-			if (this->lista_productos[i].get_alias() == cliente.get_alias_productos()[i])
+			if (this->lista_productos[i].get_alias() == cliente.get_alias_productos()[j])
 			{
-				lista_final[k] = lista_productos[i];
-				k++;
+				if (this->lista_productos[i].get_stock() != 0) {
+					lista_final[k] = lista_productos[i];
+					k++;
+				}
 			}
 		}
 	}
 
-	cliente.obtener_carrito(lista_final);
-	return lista_final;
+	return lista_final; //esta lista se enviara a CLIENTE::CARRITO obtener_carrito(vector<PRODUCTO> lista) para inicializarlo
 	
 	
 }
