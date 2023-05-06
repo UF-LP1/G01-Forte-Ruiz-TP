@@ -11,10 +11,17 @@
 
 class COMESTIBLES: public PRODUCTO {
 public: 
-    COMESTIBLES():PRODUCTO(){}
-    COMESTIBLES(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, string peso, time_t fecha_vencimiento) : PRODUCTO(categoria, stock, precio, codigo,alias,descripcion){}
-   
+    COMESTIBLES() :PRODUCTO()
+    {
+        this->peso_neto = "0";
+        this->vencimiento = 0;
+    }
 
+    COMESTIBLES(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, string peso, time_t fecha_vencimiento) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion) {
+        this->peso_neto = peso;
+        this->vencimiento = fecha_vencimiento;
+        return;
+    }
  void set_peso(string peso);
  void set_fecha_vencimiento(time_t fecha_vencimiento);
 

@@ -6,26 +6,6 @@
 #include "DISFRACES.h"
 
 
- DISFRACES::DISFRACES(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, time_t fecha_alquilado, time_t fecha_devuelto, time_t fecha_devolvio, ESTADO estado, TALLE talle) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion)
- {
-	 
-		this->fecha_alquilado = fecha_alquilado;
-		 this->fecha_devuelto = fecha_devuelto;
-		 this->fecha_devolvio = fecha_devolvio;
-		 this->talle = talle;
-		 this->estado_disfraz = estado;
-		 return;
-	 }
-
- DISFRACES::DISFRACES():PRODUCTO()
- {
-	 this->fecha_alquilado = 0;
-	 this->fecha_devuelto = 0;
-	 this->fecha_devolvio = 0;
-	 this->talle = M;
-	 this->estado_disfraz = excelente;
-	
- }
 
 
  void DISFRACES::set_fecha_devuelto(time_t fecha_devuelto) {

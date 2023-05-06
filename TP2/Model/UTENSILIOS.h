@@ -14,9 +14,20 @@ class UTENSILIOS: public PRODUCTO {
 public: 
     
 
-    UTENSILIOS(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, MATERIAL material, int unidades, TAMANIO tamanio) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion) {
-    }
- UTENSILIOS():PRODUCTO(){}
+	UTENSILIOS(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, MATERIAL material, int unidades, TAMANIO tamanio) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion) {
+
+		this->material = material;
+		this->unidades = unidades;
+		this->tamanio = tamanio;
+		return;
+	}
+
+	UTENSILIOS() :PRODUCTO()
+	{
+		this->material = plastico;
+		this->unidades = 0;
+		this->tamanio = generico;
+	}
 
  void set_material(MATERIAL material);
  void set_unidades(unsigned int unidades);
