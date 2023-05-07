@@ -38,7 +38,7 @@ string get_codigo_producto();
 
  ~PRODUCTO();
 
-private: 
+protected: 
     CATEGORIA tipo;
     unsigned int stock;
     float precio;

@@ -5,7 +5,7 @@
 
 
 //constructor y destructor
-JPG::JPG(string URL, unsigned int ancho, unsigned int alto, bool a_color, unsigned int senia) {
+JPG::JPG(string URL, unsigned int ancho, unsigned int alto, bool a_color, float senia) {
     this->URL = URL;
     this->ancho = ancho;
     this->alto = alto;
@@ -26,24 +26,12 @@ JPG::~JPG() {
 }
 
 //setters
-float JPG::set_senia(unsigned int ancho, unsigned int alto, float senia, bool a_color)//5x5 50x50 100x100, no se puede menos, ni tampoco mas, entre medio sí.
-{
-    float precio_a_seniar = 0; //donde se iran sumando los precios
-    if (ancho * alto <= 25) {
-        cout << "No se permiten impresiones menores a 5x5 cm" << endl; //!!!!!
-    }
-    if (ancho * alto > 25 && ancho * alto <= 2500) {
-        precio_a_seniar += N;
-    }
-    if (ancho * alto > 2500 && ancho * alto <= 10000) {
-        precio_a_seniar += Q;
-    }
-
-    if (a_color == true)
-        precio_a_seniar += P;
-
-    return (30 * precio_a_seniar) / 100;
-
+void JPG::set_senia(string URL, unsigned int ancho, unsigned int alto, bool a_color, float senia) {
+    this->URL = URL;
+    this->ancho = ancho;
+    this->alto = alto;
+    this->a_color = a_color;
+    this->senia = senia;
 }
 void JPG::set_URL(string url)
 {
@@ -74,6 +62,26 @@ unsigned int JPG::get_ancho() {
 }
 unsigned int JPG::get_alto() {
     return this->alto;
+}
+
+float JPG::get_senia(unsigned int ancho, unsigned int alto, float senia, bool a_color)//5x5 50x50 100x100, no se puede menos, ni tampoco mas, entre medio sí.
+{
+    float precio_a_seniar = 0; //donde se iran sumando los precios
+    if (ancho * alto <= 25) {
+        cout << "No se permiten impresiones menores a 5x5 cm" << endl; //!!!!!
+    }
+    if (ancho * alto > 25 && ancho * alto <= 2500) {
+        precio_a_seniar += N;
+    }
+    if (ancho * alto > 2500 && ancho * alto <= 10000) {
+        precio_a_seniar += Q;
+    }
+
+    if (a_color == true)
+        precio_a_seniar += P;
+
+    return (30 * precio_a_seniar) / 100;
+
 }
 
 
