@@ -101,7 +101,7 @@ void CLIENTE::set_talle_disfraz_devuelve(TALLE talle_disfraz_devuelve)
 {
 	this->talle_disfraz_devuelve = talle_disfraz_devuelve;
 }
-JPG obtener_imagen(string URL, unsigned int ancho, unsigned int alto, bool a_color, unsigned int senia) {
+JPG obtener_imagen(string URL, unsigned int ancho, unsigned int alto, bool a_color, float senia) {
 	JPG imagen(URL, ancho, alto, a_color, senia);
 
 	return imagen;

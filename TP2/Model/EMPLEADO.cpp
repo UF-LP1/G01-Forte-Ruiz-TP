@@ -54,17 +54,17 @@ bool EMPLEADO::get_encargado() {
 vector<PRODUCTO> EMPLEADO::buscar_productos_clientes(CLIENTE cliente)
 {
 	//tiene que comparar con la lista que tiene de productos del cotillon
-	int i = 0, j = 0, k = 0;
+	int i = 0, j = 0;
 	vector<PRODUCTO>lista_final;
 	for (i = 0; i < this->lista_productos.size(); i++) {
 		for (j = 0; j < cliente.get_alias_productos().size(); j++) {
 			if (this->lista_productos[i].get_alias() == cliente.get_alias_productos()[j])
 			{
 				if (this->lista_productos[i].get_stock() != 0) {
-					lista_final[k] = lista_productos[i];
-					k++;
+					lista_final.push_back(lista_productos[i]);
+					
 				}
-			}
+			}//no es eficiente, una vez encontrado el producto sigue recorriendo la lista hasta el final
 		}
 	}
 
@@ -74,5 +74,5 @@ vector<PRODUCTO> EMPLEADO::buscar_productos_clientes(CLIENTE cliente)
 }
 
 EMPLEADO::~EMPLEADO() {
-	this->lista_productos.~vector();
+	this->lista_productos.~vector(); //chequear que este bien esto
 }

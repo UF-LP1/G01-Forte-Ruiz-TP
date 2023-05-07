@@ -57,7 +57,7 @@ TALLE get_talle_disfraz_devuelve( );
 
 void agregar_a_carrito(PRODUCTO producto);
 
-JPG obtener_imagen(string URL, unsigned int ancho, unsigned int alto, bool a_color, unsigned int senia);
+JPG obtener_imagen(string URL, unsigned int ancho, unsigned int alto, bool a_color, float senia);
  
 CARRITO obtener_carrito(vector<PRODUCTO> lista);
  
