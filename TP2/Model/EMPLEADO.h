@@ -46,12 +46,10 @@ void recibir_disfraz(CLIENTE cliente, DISFRACES disfraz);
 */
 ~EMPLEADO();
 
-private: 
+protected: 
     string id;
     string turno;
-    bool encargado;
     string nombre;
-    vector<PRODUCTO> lista_productos;
 };
 
 #endif //_EMPLEADO_

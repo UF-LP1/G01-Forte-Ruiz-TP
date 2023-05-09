@@ -13,7 +13,20 @@ COTILLON::COTILLON(string direccion, DIAS_ABIERTO dias, time_t fecha_hoy, string
 COTILLON::~COTILLON() {
 
 }
+void COTILLON::set_lista_productos(vector<PRODUCTO> lista_productos)
+{
+    this->lista_productos = lista_productos;
+}
+void COTILLON::set_lista_empleados(vector<EMPLEADO> lista_empleados)
+{
+    this->lista_empleados = lista_empleados;
+}
+void COTILLON::set_lista_clientes(vector<CLIENTE> lista_clientes)
+{
+    this->lista_clientes = lista_clientes;
+}
 //setters
+/*
 void COTILLON::set_fecha_hoy(time_t fecha_hoy) {
     this->fecha_hoy = fecha_hoy;
     return;
@@ -46,6 +59,25 @@ time_t COTILLON::get_fecha_hoy()
 string COTILLON::get_mail_cotillon()
 {
     return this->mail_cotillon;
+}
+*/
+
+//setters
+
+
+vector<PRODUCTO> COTILLON::get_lista_productos()
+{
+    return this->lista_productos;
+}
+
+vector<EMPLEADO> COTILLON::get_lista_empleados()
+{
+    return this->lista_empleados;
+}
+
+vector<CLIENTE> COTILLON::get_lista_clientes()
+{
+    return this->lista_clientes;
 }
 
 //otros
