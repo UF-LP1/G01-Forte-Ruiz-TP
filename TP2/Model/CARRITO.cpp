@@ -5,13 +5,8 @@ CARRITO::CARRITO(vector<PRODUCTO> lista_cotillon)
 {
 	this->lista_cotillon = lista_cotillon;
 }
-CARRITO::CARRITO() 
-{
-
-}
 CARRITO::~CARRITO()
 {
-	this->lista_cotillon.~vector();
 }
 
 
