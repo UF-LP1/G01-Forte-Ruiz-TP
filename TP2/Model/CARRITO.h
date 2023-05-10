@@ -16,6 +16,7 @@ public:
 
 //constructor y destructor
 CARRITO(vector<PRODUCTO> lista_cotillon);
+CARRITO();
 ~CARRITO();
    
 //setters

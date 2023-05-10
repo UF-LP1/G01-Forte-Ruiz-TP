@@ -1,19 +1,20 @@
 #include "ENCARGADO.h"
 #include <string>
 using namespace std;
+
 void ENCARGADO:: imprimir_jpg(CLIENTE cliente) {
 
 		if (cliente.get_tiene_jpg() == false) {
 			cout << "No tiene nada para imprimir" << endl;
 			return;
 		}
-		cout << "El cliente quiso imprimir la imagen del siguiente url:" << cliente.get_info_imagen().get_URL() << endl; //https://youtu.be/dQw4w9WgXcQ?t=43
+		cout << "El cliente quiso imprimir la imagen del siguiente url:";// << cliente.obtener_imagen().get_URL() << endl; //https://youtu.be/dQw4w9WgXcQ?t=43
 }
 
 
-void ENCARGADO:: cobrar(CLIENTE cliente) {
+void ENCARGADO:: cobrar(CLIENTE cliente, CARRITO carrito) {
 	int i, j = 0, k = 0;
-	int tam_cotillon, tam_utensilios, tam_comestibles, tam_disfraces;
+
 	if (cliente.get_carrito_cl().get_lista_cotillon().empty())
 		tam_cotillon = 0;
 	else
@@ -95,4 +96,8 @@ void ENCARGADO:: cobrar(CLIENTE cliente) {
 	ticket.set_tam_compra(tam_total);
 	ticket.crear_ticket(cliente);
 }
+
+
+ENCARGADO::~ENCARGADO() {
+
 }

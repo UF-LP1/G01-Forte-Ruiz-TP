@@ -38,3 +38,8 @@ int main() {
 }
 
 
+/* 
+* lista1, lista2, lista3;
+* COTILLON nombre (lista1, lista2, lista3)
+* 
+ */

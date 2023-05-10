@@ -150,5 +150,6 @@ JPG CLIENTE::obtener_imagen(string URL, unsigned int ancho, unsigned int alto, b
 
 CARRITO CLIENTE::obtener_carrito(vector<PRODUCTO> lista)
 {
-	return CARRITO();
+	CARRITO carrito(lista);
+	return carrito;
 }
