@@ -44,7 +44,7 @@ vector<CLIENTE> COTILLON::get_lista_clientes()
 
 //otros
 void COTILLON::abrir_local() {
-    int a = this->lista_clientes.size() / this->lista_empleados.size();
+    //int a = this->lista_clientes.size() / this->lista_empleados.size(); // Que pasa si es impar?
     int j = 0;
     CARRITO carrito;
     vector<PRODUCTO> lista;
@@ -52,12 +52,18 @@ void COTILLON::abrir_local() {
     ENCARGADO encargado("pepe", "id", "tarde");
     for (int i = 0; i < this->lista_clientes.size(); i++)
     {
-       lista=lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i],this->lista_productos);
-        //empleado deberia tener acceso a la lista de productos de cotillon 
-        carrito.set_lista_cotillon(lista);
+       carrito = lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i],this->lista_productos);
+
+        //empleado deberia tener acceso a la lista de productos de cotillon. Por que?
         encargado.cobrar(lista_clientes[i], carrito);
-        if (i%a==0)
+        if (j != this->lista_empleados.size()) //mande 1 a 1
             j++;
+        else
+            j = 0; //lo reinicia para que vuelva a pasar por toda la lista
     }
     return;
+}
+
+void COTILLON::cerrar_local()
+{
 }

@@ -36,7 +36,7 @@ void cerrar_local();
 
 private: 
     vector<PRODUCTO> lista_productos;
-    vector<EMPLEADO> lista_empleados;
+    vector<EMPLEADO> lista_empleados; 
     vector<CLIENTE> lista_clientes;
 };
 

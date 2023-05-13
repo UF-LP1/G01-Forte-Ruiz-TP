@@ -36,10 +36,10 @@ public:
     
  void llamar_x_num(vector <CLIENTE> lista_clientes);//ordena la lista de clientes de menor a mayor y le pasa los clientes al resto de las funciones 
 
-vector<PRODUCTO> buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO> lista_productos);
+CARRITO buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO> lista_productos);
 
-/*void entregar_disfraz(CLIENTE cliente, DISFRACES disfraz);
-void recibir_disfraz(CLIENTE cliente, DISFRACES disfraz);
+void entregar_disfraz(CARRITO carrito, int iter); // usa la lista de productos + la posicion para saber q disfraz es. Que el metodo imprima "se entrego tal disfraz. Devuelve tal dia". Lo tiene que sacar del stock.
+void recibir_disfraz(CLIENTE cliente, DISFRACES disfraz);// Lo devuelve al stock. Que imprima "el cliente entrega tal disfraz, a tanta dif de dias de la fecha_devuelve" deberia calcular un precio extra por tardarse.
 */
 
 ~EMPLEADO();

@@ -36,6 +36,7 @@ string get_descripcion();
 string get_codigo_producto();
 
 
+
  ~PRODUCTO();
 
 protected: 
