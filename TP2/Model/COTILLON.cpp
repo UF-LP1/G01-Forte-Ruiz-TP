@@ -68,19 +68,20 @@ void COTILLON::abrir_local() {
 
 void COTILLON::iniciar_jornada()
 {
-    ordenar_x_numero;
+    ordenar_x_numero();
     //int a = this->lista_clientes.size() / this->lista_empleados.size(); // Que pasa si es impar?
     int j = 0;
-    CARRITO carrito;
-    vector<PRODUCTO*> lista;
 
     ENCARGADO encargado("pepe", "id", "tarde");
     for (int i = 0; i < this->lista_clientes.size(); i++)
     {
-        carrito = lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i], this->lista_productos);
+        lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i], this->lista_productos);
+
+        //lista_empleados[j].analizar_l_disfraces(this->lista_clientes[i]);
+        //lista_empleados[j].analizar_l_JPG(this->lista_clientes[i]);
 
         //empleado deberia tener acceso a la lista de productos de cotillon. Por que?
-        encargado.cobrar(lista_clientes[i], carrito);
+        encargado.cobrar(lista_clientes[i]);
         if (j != this->lista_empleados.size()) //mande 1 a 1
             j++;
         else

@@ -13,17 +13,17 @@ void ENCARGADO:: imprimir_jpg(CLIENTE cliente) {
 }
 
 
-void ENCARGADO:: cobrar(CLIENTE cliente, CARRITO carrito) {
+void ENCARGADO:: cobrar(CLIENTE cliente) {
 	// sumar los precios y generar un ticket.
 	//PRIMERO: sumar precios. --> Debo saber cuanta cant quiere de cada producto.
 	float acum_precio = 0;
 	TICKET ticket; //hay que cambiar TICKET porque los parametros ya no sirven. num_transaccion, fecha_transaccion se quedan, el resto no sirve.
-	for (int i = 0; i < carrito.get_lista_cotillon().size(); i++)
+	for (int i = 0; i < cliente.get_carrito()->get_lista_cotillon().size(); i++)
 	{
 
-		acum_precio += carrito.get_lista_cotillon()[i].get_precio() * carrito.get_l_info_x_produc()[i].get_cant();
-		if (carrito.get_l_info_x_produc()[i].get_envolver() == true)
-			envolver_regalo(carrito, i);
+		acum_precio += cliente.get_carrito()->get_lista_cotillon()[i].get_precio() * cliente.get_carrito()->get_l_info_x_produc()[i].get_cant();
+		if (cliente.get_carrito()->get_l_info_x_produc()[i].get_envolver() == true)
+			envolver_regalo(cliente.get_carrito(), i);
 		
 
 	}
