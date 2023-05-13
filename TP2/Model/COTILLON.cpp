@@ -72,7 +72,6 @@ void COTILLON::iniciar_jornada()
     //int a = this->lista_clientes.size() / this->lista_empleados.size(); // Que pasa si es impar?
     int j = 0;
 
-    ENCARGADO encargado("pepe", "id", "tarde");
     for (int i = 0; i < this->lista_clientes.size(); i++)
     {
         lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i], this->lista_productos);
@@ -80,8 +79,8 @@ void COTILLON::iniciar_jornada()
         //lista_empleados[j].analizar_l_disfraces(this->lista_clientes[i]);
         //lista_empleados[j].analizar_l_JPG(this->lista_clientes[i]);
 
-        //empleado deberia tener acceso a la lista de productos de cotillon. Por que?
-        encargado.cobrar(lista_clientes[i]);
+      
+        this->encargado->cobrar(lista_clientes[i]);
         if (j != this->lista_empleados.size()) //mande 1 a 1
             j++;
         else
