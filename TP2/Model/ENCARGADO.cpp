@@ -3,16 +3,13 @@
 #include <string>
 using namespace std;
 
-void ENCARGADO:: imprimir_jpg(CLIENTE cliente) //si size() ==0 no tiene nada para imprimir.
-{
-	if (cliente.get_lista_JPG().size() == 0)
-		cout << "No tiene nada para imprimir" << endl;
-	for (int i = 0; i < cliente.get_lista_JPG().size(); i++)
-	{
-		cout << "Se imprime la imagen del URL: " << cliente.get_lista_JPG()[i].get_URL() << endl;
-	}
+void ENCARGADO:: imprimir_jpg(CLIENTE cliente) {
 
-	
+		if (cliente.get_tiene_jpg() == false) {
+			cout << "No tiene nada para imprimir" << endl;
+			return;
+		}
+		cout << "El cliente quiso imprimir la imagen del siguiente url:";// << cliente.obtener_imagen().get_URL() << endl; //https://youtu.be/dQw4w9WgXcQ?t=43
 }
 
 
@@ -30,7 +27,9 @@ void ENCARGADO:: cobrar(CLIENTE cliente) {
 		
 
 	}
-	ticket.crear_ticket(cliente);
+	if (cliente.get_quiere_ticket_impreso() == true)
+	{
+		ticket.crear_ticket(/*carrito*/);
 		/*cout << "Resumen de compra:" << endl;
 		for (int i = 0; i < carrito.get_lista_cotillon().size(); i++)
 		{
@@ -38,6 +37,7 @@ void ENCARGADO:: cobrar(CLIENTE cliente) {
 		}
 		cout<< "Alquilo a precio de: "<< 
 		*/
+	}
 }
 
 void ENCARGADO::envolver_regalo(CARRITO carrito, int iter)

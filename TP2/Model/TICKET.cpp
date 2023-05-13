@@ -1,21 +1,46 @@
+/**
+ * Project Untitled
+ */
+
 
 #include "TICKET.h"
 
-TICKET::TICKET(unsigned int num_transaccion, time_t fecha_transaccion){
+TICKET::TICKET(unsigned int num_transaccion, time_t fecha_transaccion, string* lista_alias_productos, float* lista_precios, unsigned int tam_compra){
 	this->num_transaccion = num_transaccion;
 	this->fecha_transaccion = fecha_transaccion;
+	this->lista_alias_productos = lista_alias_productos;
+	this->lista_precios = lista_precios;
+	this->tam_compra = tam_compra;
+	return;
 }
 TICKET:: TICKET() {
 	this->num_transaccion = 0;
 	this->fecha_transaccion = 0;
+	this->lista_alias_productos = nullptr;
+	this->lista_precios = nullptr;
+	this->tam_compra = 0;
 }
 
 //setters
 void TICKET::set_num_transaccion(unsigned int num_transaccion) {
 	this->num_transaccion = num_transaccion;
+	return;
 }
 void TICKET::set_fecha_transaccion(time_t fecha_transaccion) {
 	this->fecha_transaccion = fecha_transaccion;
+	return;
+}
+void TICKET::set_lista_alias_productos(string* lista_alias_productos) {
+	this->lista_alias_productos = lista_alias_productos;
+	return;
+}
+void TICKET::set_lista_precios(float* lista_precios) {
+	this->lista_precios = lista_precios;
+	return;
+}
+void TICKET::set_tam_compra(unsigned int tam_compra) {
+	this->tam_compra = tam_compra;
+	return;
 }
  
 //getters
@@ -25,61 +50,44 @@ unsigned int TICKET::get_num_transaccion() {
 time_t TICKET::get_fecha_transaccion() {
 	return this->fecha_transaccion;
 }
+string* TICKET::get_lista_alias_productos() {
+	return this->lista_alias_productos;
+}
+float* TICKET::get_lista_precios() {
+	return this->lista_precios;
+}
+unsigned int TICKET::get_tam_compra() {
+	return this->tam_compra;
+}
 
 
 void TICKET::crear_ticket( CLIENTE cliente) {//funcion que imprime por pantalla la compra total realizada
-	if (cliente.get_quiere_ticket_impreso() == false) {
-		cout << "Ticket enviado a mail: " << cliente.get_mail() << endl;
+	if (cliente.get_quiere_ticket_impreso() == false)
 		return;
-	}
-	
-	float total = 0;
-	cout << endl << "Numero de transaccion: " << this->num_transaccion <<endl;
-	cout << "Metodo de pago: " << cliente.get_forma_pago() << endl;
-	cout << "lista de articulos adquiridos: " << endl;
-	if (cliente.get_carrito()->get_lista_cotillon().empty() == false)
+	cout << endl<<endl << "Numero de transaccion:" << this->num_transaccion<<endl;
+	//cout << "Metodo de pago:" << cliente.get_forma_pago() << endl;
+	cout << "lista de articulos adquiridos:" << endl;
+	int j = 0;
+	for (int i = 0; i < this->tam_compra; i++)
 	{
-		for (int i = 0; i < cliente.get_productos_a_buscar().size(); i++)
+		cout << this->lista_alias_productos[i] << "  ----  ";
+		if (cliente.get_quiere_disfraz() && j < this->tam_compra - 1)
 		{
-			cout << cliente.get_carrito()->get_lista_cotillon()[i].get_alias() << " ____________ $" << cliente.get_carrito()->get_lista_cotillon()[i].get_precio() << " ___ " << cliente.get_carrito()->get_l_info_x_produc()[i].get_cant() << endl;
-			total += cliente.get_carrito()->get_lista_cotillon()[i].get_precio() * cliente.get_carrito()->get_l_info_x_produc()[i].get_cant();
+			cout << this->lista_precios[j] << endl;
+			j++;
 		}
+		else
+			cout << this->lista_precios[i] << endl;
+		
+			
 	}
-
-	if (cliente.get_lista_JPG().empty() == false)
-	{
-		cout << "Lista de senias: " << endl;
-		for (int i = 0; i < cliente.get_lista_JPG().size(); i++)
-		{
-			cout << cliente.get_lista_JPG()[i].get_URL() << " ____________ $" << cliente.get_lista_JPG()[i].get_senia() << endl;
-			total += cliente.get_lista_JPG()[i].get_senia();
-		}
-	}
-	
-	if (cliente.get_retirar_JPG().empty() == false)
-	{
-		cout << "Lista a terminar de pagar: JPG" << endl;
-		for (int i = 0; i < cliente.get_retirar_JPG().size(); i++)
-		{
-			//como va  saber a cual senia se refiere? si es tipo alquiler, no tiene esa info
-		}
-	}
-	if (cliente.get_lista_retornar_disfraz().empty() == false)
-	{
-		cout << "Lista de disfraces devueltos: " << endl;
-		for (int i = 0; i < cliente.get_lista_retornar_disfraz().size(); i++)
-		{
-			//como sabe a que disfraz se refiere?
-		}
-	}
-
-	cout << "Total: " << total << endl;
 
 }
 
 
 
-TICKET::~TICKET()
-{
-
+ TICKET::~TICKET() {
+	 this->lista_alias_productos = nullptr;
+	 this->lista_precios = nullptr;
+	 return;
 }
