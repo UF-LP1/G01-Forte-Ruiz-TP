@@ -4,12 +4,16 @@
 
 LISTA_PR::LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE* talle, MATERIAL* material, TAMANIO* tamanio, bool alquila)
 {
+	MATERIAL m;
+	TAMANIO tm;
+	TALLE tl;
+
 	this->alias = alias;
 	this->cant = cant;
 	this->envolver = envolver;
-	this->talle = talle;
-	this->material = material;
-	this->tamanio = tamanio;
+	this->talle = &(tl=*talle);
+	this->material = &(m=*material);
+	this->tamanio = &(tm=*tamanio);
 	this->alquila = alquila;
 }
 
