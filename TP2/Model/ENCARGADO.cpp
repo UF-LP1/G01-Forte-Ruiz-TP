@@ -27,7 +27,7 @@ void ENCARGADO:: cobrar(CLIENTE cliente, CARRITO carrito) {
 		
 
 	}
-	if (cliente.get_quiere_ticket_impreso == true)
+	if (cliente.get_quiere_ticket_impreso() == true)
 	{
 		ticket.crear_ticket(/*carrito*/);
 		/*cout << "Resumen de compra:" << endl;

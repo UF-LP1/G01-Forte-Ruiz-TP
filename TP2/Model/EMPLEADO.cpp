@@ -37,15 +37,6 @@ string EMPLEADO::get_turno() {
 	return this->turno;
 }
 
-bool comparacionAscendente(unsigned int a, unsigned int b) {
-	return a < b;
-}//funcion utilizada para ordenar el vector de clientes en la funcion llamar_x_num
-
-void EMPLEADO::llamar_x_num(vector <CLIENTE> lista_clientes) {
-	//ordeno el vector de menor a mayor
-	sort(lista_clientes[0].get_numero(), lista_clientes[lista_clientes.size()].get_numero(), comparacionAscendente);
-
-}
 
 CARRITO EMPLEADO::buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO> lista_productos)
 {
