@@ -47,7 +47,7 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lis
 	vector<PRODUCTO>lista_final;
 	vector<LISTA_PR>l_obtiene; // lista con info de cant y bool envolver que consigue finalmente.
 	
-	for (i = 0; i < lista_productos.size(); i++)
+	for (i = 0; i < lista_productos.size(); i++) //no es eficiente, deberia ser al reves, nunca el cliente va a tener una lista mas grande que la lista de cotillo
 	{
 		while (j<cliente.get_productos_a_buscar().size())
 		{	
@@ -64,7 +64,7 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lis
 						if (lista_productos[i]->get_stock() >= cliente.get_productos_a_buscar()[j].get_cant())
 						{
 							lista_final.push_back(*(static_cast <DISFRACES*> (lista_productos[i])));
-							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR
+							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR <-(si anda)
 							l_obtiene.push_back(cliente.get_productos_a_buscar()[j]);
 						}
 					}
@@ -75,7 +75,7 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lis
 						if (lista_productos[i]->get_stock() >= cliente.get_productos_a_buscar()[j].get_cant())
 						{
 							lista_final.push_back(*(static_cast <UTENSILIOS*> (lista_productos[i])));
-							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR
+							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR <-(anda)
 							l_obtiene.push_back(cliente.get_productos_a_buscar()[j]);
 						}
 					

@@ -22,12 +22,7 @@ public:
 		return;
 	}
 
-	UTENSILIOS() :PRODUCTO()
-	{
-		this->material = plastico;
-		this->unidades = 0;
-		this->tamanio = generico;
-	}
+	
 
  void set_material(MATERIAL material);
  void set_unidades(unsigned int unidades);

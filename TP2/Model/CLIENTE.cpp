@@ -19,7 +19,7 @@ CLIENTE::CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticke
 }
 CLIENTE::~CLIENTE()
 {
-	delete carrito;
+	//delete carrito;
 }
 
 //setters

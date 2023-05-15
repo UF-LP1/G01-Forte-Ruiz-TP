@@ -82,23 +82,24 @@ int main() {
 
 	//--------------------------- LISTA CLIENTES -------------------
 	vector <CLIENTE> lista_clientes;
-	lista_clientes.push_back(cliente3);
 	lista_clientes.push_back(cliente1);
 	lista_clientes.push_back(cliente2);
+	lista_clientes.push_back(cliente3);//por ahora los mandamos en orden hasta solucionar sort
 
 	//-------------------------- LISTA PRODUCTOS --------------------
 	vector <PRODUCTO*> lista_productos;
-	PRODUCTO producto1(cotillon, 1, 0.0, "1", "mascara", "");
-	COMESTIBLES producto2(comestible, 1, 0.0, "2", "fondant", "", "125 gr", 0);
-	UTENSILIOS producto3(utensilio, 1, 0.0, "3", "cuchillos", "", plastico, 20, generico);
+	PRODUCTO producto1(cotillon, 1, 100.0, "1", "mascara", "");
+	COMESTIBLES producto2(comestible, 1, 100.0, "2", "fondant", "", "125 gr", 0);
+	UTENSILIOS producto3(utensilio, 1, 100.0, "3", "cuchillos", "", plastico, 20, generico);
+	LISTA_PR prod3("cuchillos", 1, false, nullptr, &(m = plastico), &(tm = generico), false, utensilio);
 	lista_productos.push_back(&producto1);
 	lista_productos.push_back(&producto2);
 	lista_productos.push_back(&producto3);
 	//compra cliente 1
 
-	DISFRACES disfraz1(disfraz, 1, 100, "4", "SHREK", XXL);
-	DISFRACES disfraz2(disfraz, 1, 100, "5", "FIONA", L);
-	DISFRACES disfraz3(disfraz, 1, 100, "6", "BURRO", M);
+	DISFRACES disfraz1(disfraz, 1, 100.0, "4", "SHREK","", XXL);
+	DISFRACES disfraz2(disfraz, 1, 100.0, "5", "FIONA","", L);
+	DISFRACES disfraz3(disfraz, 1, 100.0, "6", "BURRO","", M);
 	lista_productos.push_back(&disfraz1);
 	lista_productos.push_back(&disfraz2);
 	lista_productos.push_back(&disfraz3);

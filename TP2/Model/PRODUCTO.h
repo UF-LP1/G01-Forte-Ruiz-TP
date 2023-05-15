@@ -17,7 +17,7 @@ public:
  * @param float
  */
 PRODUCTO(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion);
-PRODUCTO();
+
     
 
 void set_precio(float precio);

@@ -13,7 +13,7 @@ COTILLON::COTILLON(vector<CLIENTE>lista_clientes, vector <PRODUCTO*> lista_produ
 }
 
 COTILLON::~COTILLON() {
-    delete encargado;
+    //delete encargado;
 }
 
 //setters
@@ -68,20 +68,23 @@ void COTILLON::abrir_local() {
 
 void COTILLON::iniciar_jornada()
 {
-    ordenar_x_numero();
+    //ordenar_x_numero();
     
     int j = 0;
 
     for (int i = 0; i < this->lista_clientes.size(); i++)
-    {
-        lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i], this->lista_productos);
+    {   
+        if(!lista_clientes[i].get_productos_a_buscar().empty())
+            lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i], this->lista_productos);
+        
+        if(!lista_clientes[i].get_lista_retornar_disfraz().empty())
+            lista_empleados[j].recibir_disfraz(&(this->lista_clientes[i]), this->lista_productos); //suma stock a los q devuelve el cliente
+        
+        if(!lista_clientes[i].get_lista_JPG().empty())
+            lista_empleados[j].analizar_l_JPG(&(this->lista_clientes[i]));
 
-        lista_empleados[j].recibir_disfraz(&(this->lista_clientes[i]), this->lista_productos); //suma stock a los q devuelve el cliente
-        lista_empleados[j].analizar_l_JPG(&(this->lista_clientes[i]));
-
-
-      
         this->encargado->cobrar(lista_clientes[i], this->lista_productos);
+
         if (j != this->lista_empleados.size()- 1) //mande 1 a 1
             j++;
         else
@@ -97,13 +100,13 @@ void COTILLON::cerrar_local()
     cout << "la recaudacion del dia fue de" << this->acum_ganancia;
 }
 
-bool comparacionAscendente(unsigned int a, unsigned int b) {
+/*static bool comparacionAscendente(unsigned int a, unsigned int b) {
     return a < b;
 }//funcion utilizada para ordenar el vector de clientes en la funcion llamar_x_num
-
 void COTILLON::ordenar_x_numero()
 {
+    int i = lista_clientes.size();
   //ordeno el vector de menor a mayor
- sort(this->lista_clientes[0].get_numero(), lista_clientes[lista_clientes.size()].get_numero(), comparacionAscendente);
+ sort(this->lista_clientes.begin(), this->lista_clientes.end());
 
-}
+}*/

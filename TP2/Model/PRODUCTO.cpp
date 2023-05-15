@@ -16,14 +16,6 @@
 	 return;
 }
 
- PRODUCTO::PRODUCTO()
- {
-	 this->tipo = cotillon;
-	 this->stock = 0;
-	 this->precio = 0.0;
-	 this->codigo_producto = "0";
-	 return;
- }
 
 
  //setters

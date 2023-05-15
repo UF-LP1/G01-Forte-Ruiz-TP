@@ -11,18 +11,24 @@ LISTA_PR::LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE* talle,
 	this->alias = alias;
 	this->cant = cant;
 	this->envolver = envolver;
-	this->talle = &(tl=*talle);
-	this->material = &(m=*material);
-	this->tamanio = &(tm=*tamanio);
+	if (talle != nullptr)
+		this->talle = &(tl = *talle);
+	else
+		this->talle = talle;
+	if (material != nullptr)
+		this->material = &(m = *material);
+	else
+		this->material = material;
+	if (tamanio != tamanio)
+		this->tamanio = &(tm = *tamanio);
+	else
+		this->tamanio = tamanio;
 	this->alquila = alquila;
 	this->categoria = categoria;
 }
 
 LISTA_PR::~LISTA_PR()
-{
-	delete this->talle;
-	delete this->material;
-	delete this->tamanio;
+{//delete talle, material, tamanio
 }
 
 //setter
@@ -54,7 +60,6 @@ void LISTA_PR::set_alquila(bool alquila)
 {
 	this->alquila = alquila;
 }
-
 void LISTA_PR::set_categoria(CATEGORIA categoria)
 {
 	this->categoria = categoria;
@@ -89,7 +94,6 @@ bool LISTA_PR::get_alquila()
 {
 	return this->alquila;
 }
-
 CATEGORIA LISTA_PR::get_categoria()
 {
 	return this->categoria;

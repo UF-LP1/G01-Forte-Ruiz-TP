@@ -12,7 +12,7 @@
 
 class DISFRACES: public PRODUCTO {
 public: 
-	DISFRACES(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, TALLE talle) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion)
+	DISFRACES(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, TALLE talle) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion)
 	{
 
 		this->talle = talle;
