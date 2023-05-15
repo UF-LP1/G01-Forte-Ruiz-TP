@@ -4,6 +4,8 @@
 
 
 #include "EMPLEADO.h"
+#include <ctime>
+
 
 
 
@@ -117,8 +119,17 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lis
 
 void EMPLEADO::entregar_disfraz(CLIENTE* cliente, DISFRACES disfraz, unsigned int cant)
 {
-	vector <ALQUILER> retornar;
-	ALQUILER alquiler_disfraz(0,0,0, excelente);//fecha actual+7, fecha actual+17,0
+	vector <ALQUILER> retornar; 
+	const time_t fecha_actual = (const time_t)time(NULL);
+	struct tm fecha_1, fecha_2;
+	localtime_s(&fecha_1, &fecha_actual);
+	fecha_1.tm_mday += 7;
+	fecha_2 = fecha_1;
+	fecha_2.tm_mday += 10;
+	time_t f_1 = mktime(&fecha_1);
+	time_t f_2 = mktime(&fecha_2);
+
+	ALQUILER alquiler_disfraz(f_1, f_2, 0, excelente);//fecha actual+7, fecha actual+17,0
 	retornar = cliente->get_retornar_disfraz();
 	retornar.push_back(alquiler_disfraz);
 	cliente->set_retornar_disfraz(retornar);
@@ -139,7 +150,9 @@ void EMPLEADO::recibir_disfraz(CLIENTE* cliente, vector<PRODUCTO*> lista_cotillo
 	for (int i = 0; i < cliente->get_lista_retornar_disfraz().size(); i++) {
 
 		ptr = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_cotillon);
-		if () {//diferencia cliente->get_retornar_disfraz()[i].get_fecha_alquila() y fecha de hoy !=0
+		if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL)) <=0)
+		{//diferencia cliente->get_retornar_disfraz()[i].get_fecha_alquila() y fecha de hoy !=0
+
 			aux = ptr->get_stock() + cliente->get_lista_retornar_disfraz()[i].get_cant();
 			ptr->set_stock(aux);
 		}
@@ -164,7 +177,16 @@ void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) //crea un objeto de tipo alquile
 	int cant = cliente->get_lista_JPG().size();
 	vector <ALQUILER> list; 
 	list = cliente->get_retirar_JPG();
-	ALQUILER aux(0,0,0,excelente);//1° fecha de hoy, 2° fecha de hoy + 10 dias
+
+	time_t f_1 = time(NULL);
+	const time_t fecha_actual = (const time_t)time(NULL); //cargo el dia de hoy, representada en segundos
+	struct tm fecha_1;
+	localtime_s(&fecha_1, &fecha_actual); //transformo fecha_actual a fecha_1 para manejar los dias de la fecha
+	fecha_1.tm_mday += 10; //agrego 10 dias
+	time_t f_2 = mktime(&fecha_1); //lo vuelvo a cambiar a time t para ponerlo en la funcion
+	
+
+	ALQUILER aux(f_1, f_2, 0, excelente);//1° fecha de hoy, 2° fecha de hoy + 10 dias
 	for (int i = 0; i < cant; i++) {
 		list.push_back(aux);
 	}
