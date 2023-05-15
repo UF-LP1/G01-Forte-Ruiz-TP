@@ -24,7 +24,7 @@ time_t get_fecha_transaccion();
 
 
 
-void crear_ticket(CLIENTE cliente, float t_pr, float t_JPG, float t_JPG2, float t_disfraz1, float t_disfraz2);
+void crear_ticket(CLIENTE cliente, float t_pr, float t_JPG, float t_JPG2, float t_disfraz1, float t_disfraz2, float total);
 
 
 ~TICKET();

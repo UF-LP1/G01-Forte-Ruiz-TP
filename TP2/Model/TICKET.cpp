@@ -29,7 +29,7 @@ time_t TICKET::get_fecha_transaccion() {
 }
 
 
-void TICKET::crear_ticket( CLIENTE cliente,float t_pr, float t_JPG, float t_JPG2, float t_disfraz1, float t_disfraz2) 
+void TICKET::crear_ticket( CLIENTE cliente,float t_pr, float t_JPG, float t_JPG2, float t_disfraz1, float t_disfraz2, float total) 
 {
 	if (cliente.get_quiere_ticket_impreso() == false) 
 	{
@@ -79,7 +79,6 @@ void TICKET::crear_ticket( CLIENTE cliente,float t_pr, float t_JPG, float t_JPG2
 		}
 	}
 
-	DISFRACES disfraz;
 
 	if (cliente.get_retornar_disfraz().empty() == false)
 	{
@@ -90,9 +89,9 @@ void TICKET::crear_ticket( CLIENTE cliente,float t_pr, float t_JPG, float t_JPG2
 
 			if (difftime(cliente.get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <= 0))
 			{
-				if (cliente.get_retornar_disfraz()[i].get_estado == regular)
+				if (cliente.get_retornar_disfraz()[i].get_estado () == regular)
 				{
-					//disfraz = buscar_disfraz(cliente.get_lista_retornar_disfraz()[i], lista_productos);
+					
 					cliente.get_lista_retornar_disfraz().erase(cliente.get_lista_retornar_disfraz().begin() + i - 1);
 					cliente.get_retornar_disfraz().erase(cliente.get_retornar_disfraz().begin() + i - 1);
 
@@ -100,8 +99,7 @@ void TICKET::crear_ticket( CLIENTE cliente,float t_pr, float t_JPG, float t_JPG2
 				}
 				if (cliente.get_retornar_disfraz()[i].get_estado() == malo)
 				{
-					//disfraz = buscar_disfraz(cliente.get_lista_retornar_disfraz()[i], lista_productos);
-					t_disfraz1 += disfraz.get_precio() * 0.1;
+				
 					cliente.get_lista_retornar_disfraz().erase(cliente.get_lista_retornar_disfraz().begin() + i - 1);
 					cliente.get_retornar_disfraz().erase(cliente.get_retornar_disfraz().begin() + i - 1);
 				}
@@ -123,7 +121,6 @@ void TICKET::crear_ticket( CLIENTE cliente,float t_pr, float t_JPG, float t_JPG2
 	}
 
 
-	total = t_pr + t_JPG + t_JPG2 + t_disfraz1 + t_disfraz2;
 
 	cout << "Total: " << total << endl;
 
