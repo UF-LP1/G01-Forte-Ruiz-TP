@@ -25,9 +25,6 @@ void set_talle(TALLE talle);
 TALLE get_talle();
 
 
-//void tiempo_alquiler(time_t fecha_recibio, time_t fecha_devolvio);
-//bool cargo_extra(ESTADO estado);
-
 ~DISFRACES();
 
 private: 

@@ -63,7 +63,7 @@ float COTILLON::get_acum_ganancia()
 
 //otros
 void COTILLON::abrir_local() {
-    cout << "Bienvenido a nuestro cotillon cotilandia" << endl;
+    cout << "Bienvenido a nuestro cotillon Cotilandia" << endl;
 }
 
 void COTILLON::iniciar_jornada()
@@ -76,12 +76,12 @@ void COTILLON::iniciar_jornada()
     {
         lista_empleados[j].buscar_productos_clientes(this->lista_clientes[i], this->lista_productos);
 
-        //lista_empleados[j].recibir_disfraz(&(this->lista_clientes[i]), this->lista_producto); //suma stock a los q devuelve el cliente
-        //lista_empleados[j].analizar_l_JPG(&(this->lista_clientes[i]));
+        lista_empleados[j].recibir_disfraz(&(this->lista_clientes[i]), this->lista_productos); //suma stock a los q devuelve el cliente
+        lista_empleados[j].analizar_l_JPG(&(this->lista_clientes[i]));
 
 
       
-        this->encargado->cobrar(lista_clientes[i]);
+        this->encargado->cobrar(lista_clientes[i], this->lista_productos);
         if (j != this->lista_empleados.size()- 1) //mande 1 a 1
             j++;
         else
