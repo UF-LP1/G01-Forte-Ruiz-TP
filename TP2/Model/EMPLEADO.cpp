@@ -42,7 +42,8 @@ string EMPLEADO::get_turno() {
 void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lista_productos)
 {
 	//tiene que comparar la lista de compra del cliente con la lista que tiene el cotillon de productos
-	int i = 0, j = 0;
+	int i;
+	int j = 0;
 	
 	vector<PRODUCTO>lista_final;
 	vector<LISTA_PR>l_obtiene; // lista con info de cant y bool envolver que consigue finalmente.

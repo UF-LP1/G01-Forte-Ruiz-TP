@@ -1,12 +1,12 @@
 #include <vector>
-#include <algorithm>
+#include <algorithm>//
 #include "../Model/JPG.h"
 #include "../Model/COTILLON.h"
 #include "../Model/EMPLEADO.h"
 #include "../Model/CLIENTE.h"
 #include "../Model/PRODUCTO.h"
-#include "../Model/CARRITO.h"
-#include "../Model/TICKET.h"
+#include "../Model/CARRITO.h"//
+#include "../Model/TICKET.h"//
 #include "../Model/COMESTIBLES.h"
 #include "../Model/UTENSILIOS.h"
 #include "../Model/DISFRACES.h"
@@ -25,8 +25,8 @@ int main() {
 	LISTA_PR prod2("fondant", 1, false, nullptr, nullptr, nullptr, false, comestible);
 	LISTA_PR prod3("cuchillos", 1, false, nullptr, &(m = plastico), &(tm = generico), false, utensilio);
 	vector<LISTA_PR> productos_a_buscar1;
-	productos_a_buscar1.push_back(prod2);
 	productos_a_buscar1.push_back(prod1);
+	productos_a_buscar1.push_back(prod2);
 	productos_a_buscar1.push_back(prod3);//lista de compra del cliente 1
 
 	vector<JPG> lista_JPG1; //se incializa y queda vacia
@@ -42,8 +42,8 @@ int main() {
 	LISTA_PR prod4("SHREK",1,true,&(tl=XXL),nullptr, nullptr, false, disfraz);
 	LISTA_PR prod5("FIONA", 1, false, &(tl = L), nullptr, nullptr, true, disfraz);
 	vector<LISTA_PR> productos_a_buscar2;
-	productos_a_buscar2.push_back(prod5);
-	productos_a_buscar2.push_back(prod4); 
+	productos_a_buscar2.push_back(prod4);
+	productos_a_buscar2.push_back(prod5); 
 
 	//lista de compra/alquiler del cliente 2
 
@@ -91,7 +91,6 @@ int main() {
 	PRODUCTO producto1(cotillon, 1, 100.0, "1", "mascara", "");
 	COMESTIBLES producto2(comestible, 1, 100.0, "2", "fondant", "", "125 gr", 0);
 	UTENSILIOS producto3(utensilio, 1, 100.0, "3", "cuchillos", "", plastico, 20, generico);
-	LISTA_PR prod3("cuchillos", 1, false, nullptr, &(m = plastico), &(tm = generico), false, utensilio);
 	lista_productos.push_back(&producto1);
 	lista_productos.push_back(&producto2);
 	lista_productos.push_back(&producto3);
