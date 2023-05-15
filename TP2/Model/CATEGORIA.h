@@ -6,6 +6,6 @@
 #ifndef _CATEGORIA_H
 #define _CATEGORIA_H
 
-enum CATEGORIA { cotillon, vajilla_descartable, articulos_reposteria, disfraces, comestibles };
+enum CATEGORIA { cotillon, utensilio, disfraz, comestible };
 
 #endif

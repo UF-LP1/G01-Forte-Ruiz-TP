@@ -2,7 +2,7 @@
 
 
 
-LISTA_PR::LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE* talle, MATERIAL* material, TAMANIO* tamanio, bool alquila)
+LISTA_PR::LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE* talle, MATERIAL* material, TAMANIO* tamanio, bool alquila, CATEGORIA categoria)
 {
 	MATERIAL m;
 	TAMANIO tm;
@@ -15,6 +15,7 @@ LISTA_PR::LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE* talle,
 	this->material = &(m=*material);
 	this->tamanio = &(tm=*tamanio);
 	this->alquila = alquila;
+	this->categoria = categoria;
 }
 
 LISTA_PR::~LISTA_PR()
@@ -54,6 +55,11 @@ void LISTA_PR::set_alquila(bool alquila)
 	this->alquila = alquila;
 }
 
+void LISTA_PR::set_categoria(CATEGORIA categoria)
+{
+	this->categoria = categoria;
+}
+
 //getters
 string LISTA_PR::get_alias()
 {
@@ -82,4 +88,9 @@ TAMANIO* LISTA_PR::get_tamanio()
 bool LISTA_PR::get_alquila()
 {
 	return this->alquila;
+}
+
+CATEGORIA LISTA_PR::get_categoria()
+{
+	return this->categoria;
 }

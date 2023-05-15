@@ -37,10 +37,11 @@ public:
     
  
 void buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lista_productos);
+void entregar_disfraz(CLIENTE *cliente, DISFRACES disfraz, unsigned int cant); // usa la lista de productos + la posicion para saber q disfraz es. Que el metodo imprima "se entrego tal disfraz. Devuelve tal dia". Lo tiene que sacar del stock.
 
-//void entregar_disfraz(CARRITO carrito, int iter); // usa la lista de productos + la posicion para saber q disfraz es. Que el metodo imprima "se entrego tal disfraz. Devuelve tal dia". Lo tiene que sacar del stock.
-//void recibir_disfraz(CLIENTE cliente, DISFRACES disfraz);// Lo devuelve al stock. Que imprima "el cliente entrega tal disfraz, a tanta dif de dias de la fecha_devuelve" deberia calcular un precio extra por tardarse.
-
+void recibir_disfraz(CLIENTE *cliente, vector <PRODUCTO*> lista_cotillon);// Lo devuelve al stock. Que imprima "el cliente entrega tal disfraz, a tanta dif de dias de la fecha_devuelve" deberia calcular un precio extra por tardarse.
+void analizar_l_JPG(CLIENTE *cliente);//crea ALQUILER y se lo carga a cliente
+DISFRACES* buscar_disfraz(LISTA_PR disfraz, vector<PRODUCTO*> lista_cotillon);//busca un disfraz en la lista de cotillon y lo devuelve
 
 protected: 
     string id;

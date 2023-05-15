@@ -3,10 +3,11 @@
 #include "MATERIAL.h"
 #include "TALLE.h"
 #include "TAMANIO.h"
+#include "CATEGORIA.h"
 using namespace std;
 class LISTA_PR {
 public:
-	LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE *talle, MATERIAL *material, TAMANIO *tamanio, bool alquila);
+	LISTA_PR(string alias, unsigned int cant, bool envolver, TALLE *talle, MATERIAL *material, TAMANIO *tamanio, bool alquila, CATEGORIA categoria);
 	~LISTA_PR();
 
 	//setters
@@ -17,6 +18,7 @@ public:
 	void set_material(MATERIAL* material);
 	void set_tamanio(TAMANIO* tamanio);
 	void set_alquila(bool alquila);
+	void set_categoria(CATEGORIA categoria);
 
 	//getters
 	string get_alias();
@@ -26,6 +28,7 @@ public:
 	MATERIAL* get_material();
 	TAMANIO* get_tamanio();
 	bool get_alquila();
+	CATEGORIA get_categoria();
 
 private:
 	string alias;
@@ -35,4 +38,5 @@ private:
 	MATERIAL* material;
 	TAMANIO* tamanio;
 	bool alquila;
+	CATEGORIA categoria;
 };

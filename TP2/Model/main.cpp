@@ -21,9 +21,9 @@ int main() {
 	TALLE tl;
 
 	//---------------------------- CLIENTE 1 ------------------------------
-	LISTA_PR prod1("mascara", 1, true, nullptr, nullptr, nullptr, false);
-	LISTA_PR prod2("fondant", 1, false, nullptr, nullptr, nullptr, false);
-	LISTA_PR prod3("cuchillos",1,false,nullptr,&(m=plastico), &(tm = generico), false);
+	LISTA_PR prod1("mascara", 1, true, nullptr, nullptr, nullptr, false, cotillon);
+	LISTA_PR prod2("fondant", 1, false, nullptr, nullptr, nullptr, false, comestible);
+	LISTA_PR prod3("cuchillos", 1, false, nullptr, &(m = plastico), &(tm = generico), false, utensilio);
 	vector<LISTA_PR> productos_a_buscar1;
 	productos_a_buscar1.push_back(prod2);
 	productos_a_buscar1.push_back(prod1);
@@ -39,15 +39,15 @@ int main() {
 
 	//----------------------------- CLIENTE 2 -------------------------------
 
-	LISTA_PR prod4("SHREK",1,true,&(tl=XXL),nullptr, nullptr, false);
-	LISTA_PR prod5("FIONA", 1, false, &(tl = L), nullptr, nullptr, true);
+	LISTA_PR prod4("SHREK",1,true,&(tl=XXL),nullptr, nullptr, false, disfraz);
+	LISTA_PR prod5("FIONA", 1, false, &(tl = L), nullptr, nullptr, true, disfraz);
 	vector<LISTA_PR> productos_a_buscar2;
 	productos_a_buscar2.push_back(prod5);
 	productos_a_buscar2.push_back(prod4); 
 
 	//lista de compra/alquiler del cliente 2
 
-	LISTA_PR prod6("BURRO",1,false,&(tl=M), nullptr,nullptr,true);//si devuelve, alquila=true??
+	LISTA_PR prod6("BURRO",1,false,&(tl=M), nullptr,nullptr,true, disfraz);//si devuelve, alquila=true??
 	vector<LISTA_PR> lista_retornar_disfraz2;
 	lista_retornar_disfraz2.push_back(prod6); 
 	
@@ -89,16 +89,16 @@ int main() {
 	//-------------------------- LISTA PRODUCTOS --------------------
 	vector <PRODUCTO*> lista_productos;
 	PRODUCTO producto1(cotillon, 1, 0.0, "1", "mascara", "");
-	COMESTIBLES producto2(articulos_reposteria, 1, 0.0, "2", "fondant", "", "125 gr", 0);
-	UTENSILIOS producto3(vajilla_descartable, 1, 0.0, "3", "cuchillos", "", plastico, 20, generico);
+	COMESTIBLES producto2(comestible, 1, 0.0, "2", "fondant", "", "125 gr", 0);
+	UTENSILIOS producto3(utensilio, 1, 0.0, "3", "cuchillos", "", plastico, 20, generico);
 	lista_productos.push_back(&producto1);
 	lista_productos.push_back(&producto2);
 	lista_productos.push_back(&producto3);
 	//compra cliente 1
 
-	DISFRACES disfraz1(disfraces, 1, 100, "4", "SHREK", XXL);
-	DISFRACES disfraz2(disfraces, 1, 100, "5", "FIONA", L);
-	DISFRACES disfraz3(disfraces, 1, 100, "6", "BURRO", M);
+	DISFRACES disfraz1(disfraz, 1, 100, "4", "SHREK", XXL);
+	DISFRACES disfraz2(disfraz, 1, 100, "5", "FIONA", L);
+	DISFRACES disfraz3(disfraz, 1, 100, "6", "BURRO", M);
 	lista_productos.push_back(&disfraz1);
 	lista_productos.push_back(&disfraz2);
 	lista_productos.push_back(&disfraz3);
