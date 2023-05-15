@@ -32,6 +32,11 @@ void ALQUILER::set_estado(ESTADO estado)
 	this->estado = estado;
 }
 
+void ALQUILER::set_senia_pagada(float senia_pagada)
+{
+	this->senia_pagada = senia_pagada;
+}
+
 time_t ALQUILER::get_fecha_alquila()
 {
 	return this->fecha_alquila;
@@ -50,4 +55,9 @@ time_t ALQUILER::get_fecha_devolvio()
 ESTADO ALQUILER::get_estado()
 {
 	return this->estado;
+}
+
+float ALQUILER::get_senia_pagada()
+{
+	return this->senia_pagada;
 }
