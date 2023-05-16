@@ -107,7 +107,7 @@ void COTILLON::iniciar_jornada()
 
 void COTILLON::cerrar_local()
 {
-    cout << endl << endl <<"Finalizacion de jornada laboral." << endl;
+    cout << endl <<"Finalizacion de jornada laboral." << endl << endl;
     cout << "------------------------" << endl;
     cout << "Hoy pasaron " << this->lista_clientes.size()<< " clientes por el local."<< endl;
     cout << endl << "La recaudacion del dia fue de $" << this->acum_ganancia << endl << endl;

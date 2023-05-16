@@ -68,13 +68,20 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 
 	DISFRACES *disfraz;
 
+	const time_t fecha_actual = (const time_t)time(NULL);
+
+
 	if (cliente->get_retornar_disfraz().empty() == false)
 	{
 		for (int i = 0; i < cliente->get_retornar_disfraz().size(); i++)
 		{
-
-			if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <= 0))
+  			if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <= 0))
 			{
+				if (difftime(fecha_actual, cliente->get_retornar_disfraz()[i].get_fecha_devolucion()) > 0)
+				{
+					t_disfraz1 += 50;//recargo establecido por haberse pasado de la fecha establecida a devolver el disfraz
+
+				}
 				if (cliente->get_retornar_disfraz()[i].get_estado() == regular)
 				{
 					disfraz = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_productos);
@@ -92,11 +99,13 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 
 	//monto disfraces que alquila en el dia
 
+
+
 	for (int i = 0; i < cliente->get_carrito()->get_lista_cotillon().size(); i++)
 	{
 		if (cliente->get_carrito()->get_l_info_x_produc()[i]->get_alquila() == true)
 		{
-			t_disfraz2 += cliente->get_carrito()->get_lista_cotillon()[i]->get_precio();
+			t_disfraz2 += cliente->get_carrito()->get_lista_cotillon()[i]->get_precio()*0.01*10; // 10 dias que se pactan (generico) para devolver
 		}
 	}
 	total = t_pr + t_JPG + t_JPG2 + t_disfraz1 + t_disfraz2;

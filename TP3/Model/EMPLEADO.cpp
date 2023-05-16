@@ -57,10 +57,6 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> li
 			{
 				if (cliente->get_productos_a_buscar()[i]->get_categoria() == disfraz) 
 				{
-					if (cliente->get_productos_a_buscar()[i]->get_alquila() == true) {
-						entregar_disfraz(cliente, *(static_cast <DISFRACES*> (lista_productos[j])), cliente->get_productos_a_buscar()[i]->get_cant());
-					}
-					else
 					if (*(cliente->get_productos_a_buscar()[i]->get_talle()) == static_cast <DISFRACES*> (lista_productos[j])->get_talle())
 					{
 						if (lista_productos[j]->get_stock() >= cliente->get_productos_a_buscar()[i]->get_cant())
@@ -68,6 +64,10 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> li
 							lista_final.push_back(static_cast <DISFRACES*> (lista_productos[j]));
 							lista_productos[j]->set_stock(lista_productos[j]->get_stock() - cliente->get_productos_a_buscar()[i]->get_cant()); // <--- NUEVO CHECKEAR <-(si anda)
 							l_obtiene.push_back(cliente->get_productos_a_buscar()[i]);
+							if (cliente->get_productos_a_buscar()[i]->get_alquila() == true) {
+								entregar_disfraz(cliente, *(static_cast <DISFRACES*> (lista_productos[j])), cliente->get_productos_a_buscar()[i]->get_cant());
+
+							}
 						}
 					}
 					
@@ -142,6 +142,7 @@ void EMPLEADO::entregar_disfraz(CLIENTE* cliente, DISFRACES disfraz, unsigned in
 	retornar_disfraz.push_back(nuevo_disfraz);
 	cliente->set_lista_retornar_disfraz(retornar_disfraz);
 
+
 }
 
 void EMPLEADO::recibir_disfraz(CLIENTE* cliente, vector<PRODUCTO*> lista_cotillon)//recorre la lista 
@@ -152,8 +153,7 @@ void EMPLEADO::recibir_disfraz(CLIENTE* cliente, vector<PRODUCTO*> lista_cotillo
 
 		ptr = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_cotillon);
 		if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL)) <=0)
-		{//diferencia cliente->get_retornar_disfraz()[i].get_fecha_alquila() y fecha de hoy !=0
-
+		{
 			aux = ptr->get_stock() + cliente->get_lista_retornar_disfraz()[i].get_cant();
 			ptr->set_stock(aux);
 		}

@@ -18,7 +18,7 @@
 int main() {
 	MATERIAL m;
 	TAMANIO tm;
-	TALLE tl;
+	
 
 	//---------------------------- CLIENTE 1 ------------------------------
 	LISTA_PR prod1("mascara", 1, true, nullptr, nullptr, nullptr, false, cotillon);
@@ -37,20 +37,31 @@ int main() {
 
 
 	//----------------------------- CLIENTE 2 -------------------------------
-
-	LISTA_PR prod4("SHREK",1,true,&(tl=XXL),nullptr, nullptr, false, disfraz);
-	LISTA_PR prod5("FIONA", 1, false, &(tl = L), nullptr, nullptr, true, disfraz);
+	TALLE tl1, tl2, tl3;
+	LISTA_PR prod4("SHREK",1,true,&(tl1=XXL),nullptr, nullptr, false, disfraz);
+	LISTA_PR prod5("FIONA", 1, false, &(tl2 = L), nullptr, nullptr, true, disfraz);
 	vector<LISTA_PR*> productos_a_buscar2;
 	productos_a_buscar2.push_back(&prod4);
 	productos_a_buscar2.push_back(&prod5); 
 
 	//lista de compra/alquiler del cliente 2
 
-	LISTA_PR prod6("BURRO",1,false,&(tl=M), nullptr,nullptr,true, disfraz);//si devuelve, alquila=true??
+	LISTA_PR prod6("BURRO",1,false,&(tl3=M), nullptr,nullptr,true, disfraz);//si devuelve, alquila=true??
 	vector<LISTA_PR> lista_retornar_disfraz2;
 	lista_retornar_disfraz2.push_back(prod6); 
 	
-	ALQUILER alquiler_prod6(0, 0, 0, malo, 0.0);
+	const time_t fecha_actual = (const time_t)time(NULL);
+	struct tm fecha_1, fecha_2;
+	localtime_s(&fecha_1, &fecha_actual);
+	fecha_1.tm_mday -= 10;
+	fecha_2 = fecha_1;
+	fecha_2.tm_mday -= 10;
+
+	time_t f_1 = mktime(&fecha_1);
+	time_t f_2 = mktime(&fecha_2);
+
+
+	ALQUILER alquiler_prod6(f_1, f_2, 0, malo, 0.0);
 	vector<ALQUILER> retornar_disfraz2;
 	retornar_disfraz2.push_back(alquiler_prod6);
 	//listas asociadas de devolucion de disfraces del cliente 2
@@ -68,7 +79,7 @@ int main() {
 	vector<JPG> lista_JPG3;
 	lista_JPG3.push_back(imagen);	//lista de impresion del cliente 3
 
-	ALQUILER retirar_imagen(0, 0, 0, excelente,30.0); 
+	ALQUILER retirar_imagen(10, 0, 0, excelente,30.0); //hacer lo mismo que con 
 	vector<ALQUILER> retirar_JPG3;
 	retirar_JPG3.push_back(retirar_imagen); //lista para retirar impresion del cliente 3
 
@@ -100,7 +111,7 @@ int main() {
 
 	DISFRACES disfraz1(disfraz, 1, 100.0, "4", "SHREK","", XXL);
 	DISFRACES disfraz2(disfraz, 1, 100.0, "5", "FIONA","", L);
-	DISFRACES disfraz3(disfraz, 1, 100.0, "6", "BURRO","", M);
+	DISFRACES disfraz3(disfraz, 0, 100.0, "6", "BURRO","", M);
 	lista_productos.push_back(&disfraz1);
 	lista_productos.push_back(&disfraz2);
 	lista_productos.push_back(&disfraz3);
