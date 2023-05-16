@@ -39,7 +39,7 @@ string EMPLEADO::get_turno() {
 	return this->turno;
 }
 
-void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lista_productos)
+void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> lista_productos)
 {
 	//tiene que comparar la lista de compra del cliente con la lista que tiene el cotillon de productos
 	int i;
@@ -50,56 +50,56 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lis
 	
 	for (i = 0; i < lista_productos.size(); i++) //no es eficiente, deberia ser al reves, nunca el cliente va a tener una lista mas grande que la lista de cotillo
 	{
-		while (j<cliente.get_productos_a_buscar().size())
+		while (j<cliente->get_productos_a_buscar().size())
 		{	
-			if (lista_productos[i]->get_alias() == cliente.get_productos_a_buscar()[j].get_alias())
+			if (lista_productos[i]->get_alias() == cliente->get_productos_a_buscar()[j].get_alias())
 			{
-				if (cliente.get_productos_a_buscar()[j].get_categoria() == disfraz) 
+				if (cliente->get_productos_a_buscar()[j].get_categoria() == disfraz) 
 				{
-					if (cliente.get_productos_a_buscar()[j].get_alquila() == true) {
-						entregar_disfraz(&cliente, *(static_cast <DISFRACES*> (lista_productos[i])), cliente.get_productos_a_buscar()[j].get_cant());
+					if (cliente->get_productos_a_buscar()[j].get_alquila() == true) {
+						entregar_disfraz(cliente, *(static_cast <DISFRACES*> (lista_productos[i])), cliente->get_productos_a_buscar()[j].get_cant());
 					}
 					else
-					if (*(cliente.get_productos_a_buscar()[j].get_talle()) == static_cast <DISFRACES*> (lista_productos[i])->get_talle())
+					if (*(cliente->get_productos_a_buscar()[j].get_talle()) == static_cast <DISFRACES*> (lista_productos[i])->get_talle())
 					{
-						if (lista_productos[i]->get_stock() >= cliente.get_productos_a_buscar()[j].get_cant())
+						if (lista_productos[i]->get_stock() >= cliente->get_productos_a_buscar()[j].get_cant())
 						{
 							lista_final.push_back(*(static_cast <DISFRACES*> (lista_productos[i])));
-							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR <-(si anda)
-							l_obtiene.push_back(cliente.get_productos_a_buscar()[j]);
+							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente->get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR <-(si anda)
+							l_obtiene.push_back(cliente->get_productos_a_buscar()[j]);
 						}
 					}
 					
 				}
-				if (cliente.get_productos_a_buscar()[j].get_categoria() == utensilio) {
-					if (*(cliente.get_productos_a_buscar()[j].get_material()) == static_cast <UTENSILIOS*> (lista_productos[i])->get_material()) {
-						if (lista_productos[i]->get_stock() >= cliente.get_productos_a_buscar()[j].get_cant())
+				if (cliente->get_productos_a_buscar()[j].get_categoria() == utensilio) {
+					if (*(cliente->get_productos_a_buscar()[j].get_material()) == static_cast <UTENSILIOS*> (lista_productos[i])->get_material()) {
+						if (lista_productos[i]->get_stock() >= cliente->get_productos_a_buscar()[j].get_cant())
 						{
 							lista_final.push_back(*(static_cast <UTENSILIOS*> (lista_productos[i])));
-							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR <-(anda)
-							l_obtiene.push_back(cliente.get_productos_a_buscar()[j]);
+							lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente->get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR <-(anda)
+							l_obtiene.push_back(cliente->get_productos_a_buscar()[j]);
 						}
 					
 					}
 				}
-				if (cliente.get_productos_a_buscar()[j].get_categoria() == comestible) 
+				if (cliente->get_productos_a_buscar()[j].get_categoria() == comestible)
 				{	
 					
-					if (lista_productos[i]->get_stock() >= cliente.get_productos_a_buscar()[j].get_cant())
+					if (lista_productos[i]->get_stock() >= cliente->get_productos_a_buscar()[j].get_cant())
 					{
 						lista_final.push_back(*(static_cast <COMESTIBLES*> (lista_productos[i])));
-						lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR
-						l_obtiene.push_back(cliente.get_productos_a_buscar()[j]);
+						lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente->get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR
+						l_obtiene.push_back(cliente->get_productos_a_buscar()[j]);
 					}
 					
 				}
-				if (cliente.get_productos_a_buscar()[j].get_categoria() ==cotillon) {
+				if (cliente->get_productos_a_buscar()[j].get_categoria() ==cotillon) {
 
-					if (lista_productos[i]->get_stock() >= cliente.get_productos_a_buscar()[j].get_cant())
+					if (lista_productos[i]->get_stock() >= cliente->get_productos_a_buscar()[j].get_cant())
 					{
 						lista_final.push_back(*(lista_productos[i]));
-						lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente.get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR
-						l_obtiene.push_back(cliente.get_productos_a_buscar()[j]);
+						lista_productos[i]->set_stock(lista_productos[i]->get_stock() - cliente->get_productos_a_buscar()[j].get_cant()); // <--- NUEVO CHECKEAR
+						l_obtiene.push_back(cliente->get_productos_a_buscar()[j]);
 					}
 				}
 				break;
@@ -113,7 +113,7 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lis
 		
 	
 	CARRITO carrito(lista_final, l_obtiene);
-	cliente.set_carrito(&carrito);
+	cliente->set_carrito(&carrito);
 	return;
 
 }

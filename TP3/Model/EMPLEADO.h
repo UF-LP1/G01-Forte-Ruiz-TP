@@ -36,7 +36,7 @@ public:
 
     
  
-void buscar_productos_clientes(CLIENTE cliente, vector<PRODUCTO*> lista_productos);
+void buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> lista_productos);
 void entregar_disfraz(CLIENTE *cliente, DISFRACES disfraz, unsigned int cant); // usa la lista de productos + la posicion para saber q disfraz es. Que el metodo imprima "se entrego tal disfraz. Devuelve tal dia". Lo tiene que sacar del stock.
 
 void recibir_disfraz(CLIENTE *cliente, vector <PRODUCTO*> lista_cotillon);// Lo devuelve al stock. Que imprima "el cliente entrega tal disfraz, a tanta dif de dias de la fecha_devuelve" deberia calcular un precio extra por tardarse.
