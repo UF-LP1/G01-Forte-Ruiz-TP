@@ -12,7 +12,7 @@ class ALQUILER {
 public:
 
  //constructor y destructor
- ALQUILER(time_t fecha_alquila, time_t fecha_devolucion, time_t fecha_devolvio, ESTADO estado);
+ ALQUILER(time_t fecha_alquila, time_t fecha_devolucion, time_t fecha_devolvio, ESTADO estado, float senia_pagada);
  ~ALQUILER();
 
 //setters

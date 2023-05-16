@@ -24,26 +24,25 @@ int main() {
 	LISTA_PR prod1("mascara", 1, true, nullptr, nullptr, nullptr, false, cotillon);
 	LISTA_PR prod2("fondant", 1, false, nullptr, nullptr, nullptr, false, comestible);
 	LISTA_PR prod3("cuchillos", 1, false, nullptr, &(m = plastico), &(tm = generico), false, utensilio);
-	vector<LISTA_PR> productos_a_buscar1;
-	productos_a_buscar1.push_back(prod1);
-	productos_a_buscar1.push_back(prod2);
-	productos_a_buscar1.push_back(prod3);//lista de compra del cliente 1
+	vector<LISTA_PR*> productos_a_buscar1;
+	productos_a_buscar1.push_back(&prod1);
+	productos_a_buscar1.push_back(&prod2);
+	productos_a_buscar1.push_back(&prod3);//lista de compra del cliente 1
 
 	vector<JPG> lista_JPG1; //se incializa y queda vacia
 	vector<ALQUILER> retirar_JPG1; //se incializa y queda vacia
 	vector<LISTA_PR> lista_retornar_disfraz1; //se incializa y queda vacia
 	vector <ALQUILER> retornar_disfraz1; //se incializa y queda vacia
-
-	CLIENTE cliente1(1, "12345", "cliente1@mail.com", true, efectivo, productos_a_buscar1, lista_JPG1, retirar_JPG1, lista_retornar_disfraz1, retornar_disfraz1, nullptr);
+		CLIENTE cliente1(1, "12345", "cliente1@mail.com", true, efectivo, productos_a_buscar1, lista_JPG1, retirar_JPG1, lista_retornar_disfraz1, retornar_disfraz1);
 
 
 	//----------------------------- CLIENTE 2 -------------------------------
 
 	LISTA_PR prod4("SHREK",1,true,&(tl=XXL),nullptr, nullptr, false, disfraz);
 	LISTA_PR prod5("FIONA", 1, false, &(tl = L), nullptr, nullptr, true, disfraz);
-	vector<LISTA_PR> productos_a_buscar2;
-	productos_a_buscar2.push_back(prod4);
-	productos_a_buscar2.push_back(prod5); 
+	vector<LISTA_PR*> productos_a_buscar2;
+	productos_a_buscar2.push_back(&prod4);
+	productos_a_buscar2.push_back(&prod5); 
 
 	//lista de compra/alquiler del cliente 2
 
@@ -51,15 +50,16 @@ int main() {
 	vector<LISTA_PR> lista_retornar_disfraz2;
 	lista_retornar_disfraz2.push_back(prod6); 
 	
-	ALQUILER alquiler_prod6(0, 0, 0, malo);
+	ALQUILER alquiler_prod6(0, 0, 0, malo, 0.0);
 	vector<ALQUILER> retornar_disfraz2;
 	retornar_disfraz2.push_back(alquiler_prod6);
 	//listas asociadas de devolucion de disfraces del cliente 2
 
 	vector<JPG> lista_JPG2; //se incializa y queda vacia
 	vector<ALQUILER> retirar_JPG2; //se incializa y queda vacia
+	
 
-	CLIENTE cliente2(2, "6789", "cliente2@mail.com", false, tarjeta_credito, productos_a_buscar2, lista_JPG2, retirar_JPG2, lista_retornar_disfraz2, retornar_disfraz2, nullptr);
+	CLIENTE cliente2(2, "6789", "cliente2@mail.com", true, tarjeta_credito, productos_a_buscar2, lista_JPG2, retirar_JPG2, lista_retornar_disfraz2, retornar_disfraz2);
 
 	
 	//--------------------------- CLIENTE 3 ------------------------------
@@ -68,15 +68,17 @@ int main() {
 	vector<JPG> lista_JPG3;
 	lista_JPG3.push_back(imagen);	//lista de impresion del cliente 3
 
-	ALQUILER retirar_imagen(0, 0, 0, excelente); 
+	ALQUILER retirar_imagen(0, 0, 0, excelente,30.0); 
 	vector<ALQUILER> retirar_JPG3;
 	retirar_JPG3.push_back(retirar_imagen); //lista para retirar impresion del cliente 3
 
-	vector <LISTA_PR> productos_a_buscar3; //se incializa y queda vacia
+	vector <LISTA_PR*> productos_a_buscar3; //se incializa y queda vacia
 	vector<LISTA_PR> lista_retornar_disfraz3; //se incializa y queda vacia
 	vector <ALQUILER> retornar_disfraz3; //se incializa y queda vacia
+	vector <PRODUCTO*> LISTA;
 
-	CLIENTE cliente3(3, "98765", "cliente3@mail.com", true, app_celular, productos_a_buscar3, lista_JPG3, retirar_JPG3, lista_retornar_disfraz3, retornar_disfraz3, nullptr);
+
+	CLIENTE cliente3(3, "98765", "cliente3@mail.com", true, app_celular, productos_a_buscar3, lista_JPG3, retirar_JPG3, lista_retornar_disfraz3, retornar_disfraz3);
 
 	//----------------------------------------------------------------------------------	
 
@@ -121,7 +123,7 @@ int main() {
 	cotillon.iniciar_jornada();
 	cotillon.cerrar_local();
 
-
+	
 	return 0;
 }
 

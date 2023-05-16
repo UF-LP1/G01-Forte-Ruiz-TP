@@ -14,6 +14,7 @@ COTILLON::COTILLON(vector<CLIENTE>lista_clientes, vector <PRODUCTO*> lista_produ
 
 COTILLON::~COTILLON() {
     //delete encargado;
+    
 }
 
 //setters
@@ -63,7 +64,8 @@ float COTILLON::get_acum_ganancia()
 
 //otros
 void COTILLON::abrir_local() {
-    cout << "Bienvenido a nuestro cotillon Cotilandia" << endl;
+    cout << "Bienvenido a nuestro cotillon Cotilandia" << endl << endl;
+    cout << "------------------------" << endl << endl;
 }
 
 void COTILLON::iniciar_jornada()
@@ -71,33 +73,45 @@ void COTILLON::iniciar_jornada()
     //ordenar_x_numero();
     
     int j = 0;
+    float acum = 0.0;
+    vector<PRODUCTO*> *lista_carrito = new vector<PRODUCTO*>;
+    vector<LISTA_PR*> *lista_info = new vector<LISTA_PR*>;
 
     for (int i = 0; i < this->lista_clientes.size(); i++)
-    {   
-        if(!lista_clientes[i].get_productos_a_buscar().empty())
-            lista_empleados[j].buscar_productos_clientes(&lista_clientes[i], this->lista_productos);
-        
+    {
+        if (!lista_clientes[i].get_productos_a_buscar().empty())
+        {
+            lista_empleados[j].buscar_productos_clientes(&lista_clientes[i], this->lista_productos, lista_carrito, lista_info);
+            lista_clientes[i].get_carrito()->set_lista_cotillon(*lista_carrito);
+            lista_clientes[i].get_carrito()->set_l_info_x_produc(*lista_info);
+        }
         if(!lista_clientes[i].get_lista_retornar_disfraz().empty())
             lista_empleados[j].recibir_disfraz(&(this->lista_clientes[i]), this->lista_productos); //suma stock a los q devuelve el cliente
         
         if(!lista_clientes[i].get_lista_JPG().empty())
             lista_empleados[j].analizar_l_JPG(&(this->lista_clientes[i]));
 
-        this->encargado->cobrar(&lista_clientes[i], this->lista_productos);
+        acum+=this->encargado->cobrar(&lista_clientes[i], this->lista_productos);
 
         if (j != this->lista_empleados.size()- 1) //mande 1 a 1
             j++;
         else
             j = 0; //lo reinicia para que vuelva a pasar por toda la lista
     }
+    this->acum_ganancia = acum;
+
+    //delete[] lista_carrito;
+    //delete[] lista_info; //si lo descomento me tira una exception, correspnde que lo eliminemos en esta funcion
     return;
 }
 
 void COTILLON::cerrar_local()
 {
-    cout << "finalizacion de jornada laboral" << endl;
-    cout<< "pasaron" << this->lista_clientes.size()<< "clientes por el local"<< endl;
-    cout << "la recaudacion del dia fue de" << this->acum_ganancia;
+    cout << endl << endl <<"Finalizacion de jornada laboral." << endl;
+    cout << "------------------------" << endl;
+    cout << "Hoy pasaron " << this->lista_clientes.size()<< " clientes por el local."<< endl;
+    cout << endl << "La recaudacion del dia fue de $" << this->acum_ganancia << endl << endl;
+    cout << "------------------------" << endl << endl;
 }
 
 /*static bool comparacionAscendente(unsigned int a, unsigned int b) {

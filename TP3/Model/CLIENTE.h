@@ -16,7 +16,7 @@ class CLIENTE {
 public: 
     
 //constructor y destructor
-CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticket_impreso, FORMA_PAGO forma_pago, vector<LISTA_PR> productos_a_buscar, vector<JPG> lista_JPG, vector<ALQUILER> retirar_JPG, vector<LISTA_PR> lista_retornar_disfraz, vector<ALQUILER> retornar_disfraz, CARRITO* carrito);
+CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticket_impreso, FORMA_PAGO forma_pago, vector<LISTA_PR*> productos_a_buscar, vector<JPG> lista_JPG, vector<ALQUILER> retirar_JPG, vector<LISTA_PR> lista_retornar_disfraz, vector<ALQUILER> retornar_disfraz);
 
 ~CLIENTE();
 
@@ -26,7 +26,7 @@ void set_dni(string dni);
 void set_mail(string mail);
 void set_quiere_ticket_impreso(bool quiere_ticket_impreso);
 void set_forma_pago(FORMA_PAGO forma_pago);
-void set_productos_a_buscar(vector<LISTA_PR> productos_a_buscar);
+void set_productos_a_buscar(vector<LISTA_PR*> productos_a_buscar);
 void set_lista_JPG(vector<JPG> lista_JPG);
 void set_retirar_JPG(vector<ALQUILER> retirar_JPG);
 void set_lista_retornar_disfraz(vector<LISTA_PR> lista_retornar_disfraz);
@@ -40,7 +40,7 @@ string get_dni( );
 string get_mail();
 bool get_quiere_ticket_impreso();
 FORMA_PAGO get_forma_pago();
-vector<LISTA_PR> get_productos_a_buscar();
+vector<LISTA_PR*> get_productos_a_buscar();
 vector<JPG> get_lista_JPG();
 vector<ALQUILER> get_retirar_JPG();
 vector<LISTA_PR> get_lista_retornar_disfraz();
@@ -56,7 +56,7 @@ private:
     bool quiere_ticket_impreso;
     FORMA_PAGO forma_pago;
 
-    vector<LISTA_PR> productos_a_buscar;
+    vector<LISTA_PR*> productos_a_buscar;
     vector<JPG> lista_JPG;
     vector<ALQUILER> retirar_JPG;
     vector<LISTA_PR> lista_retornar_disfraz;

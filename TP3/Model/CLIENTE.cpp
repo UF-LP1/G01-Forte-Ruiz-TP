@@ -2,7 +2,7 @@
 
 //constructor y destructor
 
-CLIENTE::CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticket_impreso, FORMA_PAGO forma_pago, vector<LISTA_PR> productos_a_buscar, vector<JPG> lista_JPG, vector<ALQUILER> retirar_JPG, vector<LISTA_PR> lista_retornar_disfraz, vector<ALQUILER> retornar_disfraz, CARRITO* carrito)
+CLIENTE::CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticket_impreso, FORMA_PAGO forma_pago, vector<LISTA_PR*> productos_a_buscar, vector<JPG> lista_JPG, vector<ALQUILER> retirar_JPG, vector<LISTA_PR> lista_retornar_disfraz, vector<ALQUILER> retornar_disfraz)
 {
 	this->numero = numero;
 	this->dni = dni;
@@ -14,12 +14,13 @@ CLIENTE::CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticke
 	this->retirar_JPG = retirar_JPG;
 	this->lista_retornar_disfraz = lista_retornar_disfraz;
 	this->retornar_disfraz = retornar_disfraz;
+	CARRITO* carrito = new CARRITO;
 	this->carrito = carrito;
 
 }
 CLIENTE::~CLIENTE()
 {
-	//delete carrito;
+	//delete carrito; si lo descomento me tira una exception
 }
 
 //setters
@@ -43,7 +44,7 @@ void CLIENTE::set_forma_pago(FORMA_PAGO forma_pago)
 {
 	this->forma_pago = forma_pago;
 }
-void CLIENTE::set_productos_a_buscar(vector<LISTA_PR> productos_a_buscar)
+void CLIENTE::set_productos_a_buscar(vector<LISTA_PR*> productos_a_buscar)
 {
 	this->productos_a_buscar = productos_a_buscar;
 }
@@ -91,7 +92,7 @@ FORMA_PAGO CLIENTE::get_forma_pago()
 }
 
 
-vector<LISTA_PR> CLIENTE::get_productos_a_buscar()
+vector<LISTA_PR*> CLIENTE::get_productos_a_buscar()
 {
 	return this->productos_a_buscar;
 }
