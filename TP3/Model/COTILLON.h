@@ -36,7 +36,7 @@ public:
 void abrir_local();
 void iniciar_jornada();
 void cerrar_local();
-//void ordenar_x_numero();
+
 
 private: 
     vector<PRODUCTO*> lista_productos;

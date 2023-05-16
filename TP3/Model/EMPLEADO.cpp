@@ -170,7 +170,7 @@ DISFRACES* EMPLEADO::buscar_disfraz(LISTA_PR disfraz, vector<PRODUCTO*> lista_co
 	}
 	ptr = static_cast<DISFRACES*> (ptr2);
 	return ptr; //que pasa si no lo encuentra
-	//delete ptr y ptr2 en el desctructor!!
+	
 }
 
 void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) //crea un objeto de tipo alquiler y se lo asigna a cliente para retirar 
@@ -192,7 +192,7 @@ void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) //crea un objeto de tipo alquile
 		list.push_back(aux);
 	}
 	cliente->set_retirar_JPG(list);
-	//delete cliente
+	
 }
 
 

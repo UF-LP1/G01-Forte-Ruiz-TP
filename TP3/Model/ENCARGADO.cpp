@@ -3,17 +3,7 @@
 #include <string>
 using namespace std;
 
-void ENCARGADO:: imprimir_jpg(CLIENTE cliente) //si size() ==0 no tiene nada para imprimir.
-{
-	if (cliente.get_lista_JPG().size() == 0)
-		cout << "No tiene nada para imprimir" << endl;
-	for (int i = 0; i < cliente.get_lista_JPG().size(); i++)
-	{
-		cout << "Se imprime la imagen del URL: " << cliente.get_lista_JPG()[i].get_URL() << endl;
-	}
 
-	
-}
 
 
 float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //calcula montos totales + calcula ganancia por cliente
@@ -109,7 +99,9 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 		}
 	}
 	total = t_pr + t_JPG + t_JPG2 + t_disfraz1 + t_disfraz2;
+
 	ticket.crear_ticket(cliente, t_pr, t_JPG, t_JPG2, t_disfraz1, t_disfraz2, total);
+
 	return total;
 }
 

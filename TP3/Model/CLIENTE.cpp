@@ -14,13 +14,12 @@ CLIENTE::CLIENTE(unsigned int numero, string dni, string mail, bool quiere_ticke
 	this->retirar_JPG = retirar_JPG;
 	this->lista_retornar_disfraz = lista_retornar_disfraz;
 	this->retornar_disfraz = retornar_disfraz;
-	CARRITO* carrito = new CARRITO;
-	this->carrito = carrito;
+	this->carrito = new CARRITO();
 
 }
 CLIENTE::~CLIENTE()
 {
-	//delete carrito; si lo descomento me tira una exception
+	//delete carrito; // me tira una exception
 }
 
 //setters

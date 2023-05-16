@@ -14,7 +14,7 @@ class UTENSILIOS: public PRODUCTO {
 public: 
     
 
-	UTENSILIOS(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, MATERIAL material, int unidades, TAMANIO tamanio) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion) {
+	UTENSILIOS(CATEGORIA categoria, unsigned int stock, float precio, string codigo, string alias, string descripcion, MATERIAL material, unsigned int unidades, TAMANIO tamanio) : PRODUCTO(categoria, stock, precio, codigo, alias, descripcion) {
 
 		this->material = material;
 		this->unidades = unidades;

@@ -102,9 +102,9 @@ int main() {
 
 	//--------------------------- LISTA CLIENTES -------------------
 	vector <CLIENTE> lista_clientes;
+	lista_clientes.push_back(cliente3);
 	lista_clientes.push_back(cliente1);
 	lista_clientes.push_back(cliente2);
-	lista_clientes.push_back(cliente3);//por ahora los mandamos en orden hasta solucionar sort
 
 	//-------------------------- LISTA PRODUCTOS --------------------
 	vector <PRODUCTO*> lista_productos;
