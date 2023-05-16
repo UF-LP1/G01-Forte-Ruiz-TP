@@ -70,7 +70,7 @@ void COTILLON::abrir_local() {
 
 void COTILLON::iniciar_jornada()
 {
-    //ordenar_x_numero();
+   // ordenar_x_numero();
     
     int j = 0;
     float acum = 0.0;
@@ -100,8 +100,8 @@ void COTILLON::iniciar_jornada()
     }
     this->acum_ganancia = acum;
 
-    //delete[] lista_carrito;
-    //delete[] lista_info; //si lo descomento me tira una exception, correspnde que lo eliminemos en esta funcion
+    delete lista_carrito;
+    delete lista_info; //si lo descomento me tira una exception, correspnde que lo eliminemos en esta funcion
     return;
 }
 

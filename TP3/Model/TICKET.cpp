@@ -74,24 +74,33 @@ void TICKET::crear_ticket(CLIENTE* cliente, float t_pr, float t_JPG, float t_JPG
 		{
 			cout << cliente->get_lista_JPG()[i].get_URL() << " ____________ $" << cliente->get_lista_JPG()[i].get_senia() << endl;
 		}
-		cliente->get_lista_JPG().clear(); // ya cobró, borro la información
+		vector<JPG> ola = cliente->get_lista_JPG();
+		ola.clear(); // ya cobró, borro la información
+		cliente->set_lista_JPG(ola);
 		cout << endl << "Monto total de senias pagadas: $" << t_JPG << endl;
 	}
-	
-	if (cliente->get_retirar_JPG().empty() == false)
+	vector<ALQUILER> val = cliente->get_retirar_JPG();
+	if (val.empty() == false)
 	{
 		cout<< endl << "Retiro de impresiones: $";
 		cout << t_JPG2 << endl;
-		for (int i = 0; i < cliente->get_retirar_JPG().size(); i++)
+		for (int i = 0; i < val.size(); i++)
 		{
-			if (difftime(cliente->get_retirar_JPG()[i].get_fecha_devolucion(), time(NULL)) <= 0)
+			if (difftime(val[i].get_fecha_devolucion(), time(NULL)) <= 0)
 			{
-				//cliente->get_retirar_JPG().erase(cliente->get_retirar_JPG().begin() + i ); //elimina el de esa posicion unicamente
+				vector<ALQUILER>::iterator it = val.begin();
+				val.erase(it+i); //elimina el de esa posicion unicamente
+				cliente->set_retirar_JPG(val);
+
 			}
 
 		}
 	}
 
+	vector<ALQUILER> ola1 = cliente->get_retornar_disfraz();
+	vector<ALQUILER>::iterator it1 = ola1.begin();
+	vector<LISTA_PR> ola2 = cliente->get_lista_retornar_disfraz();
+	vector<LISTA_PR>::iterator it2 = ola2.begin();
 
 	if (cliente->get_retornar_disfraz().empty() == false)
 	{
@@ -102,20 +111,10 @@ void TICKET::crear_ticket(CLIENTE* cliente, float t_pr, float t_JPG, float t_JPG
 
 			if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <= 0))
 			{
-				if (cliente->get_retornar_disfraz()[i].get_estado () == regular)
-				{
-					
-					//cliente->get_lista_retornar_disfraz().erase(cliente->get_lista_retornar_disfraz().begin() + i);
-					//cliente->get_retornar_disfraz().erase(cliente->get_retornar_disfraz().begin() + i);
-
-
-				}
-				if (cliente->get_retornar_disfraz()[i].get_estado() == malo)
-				{
-				
-					//cliente->get_lista_retornar_disfraz().erase(cliente->get_lista_retornar_disfraz().begin() + i);
-					//cliente->get_retornar_disfraz().erase(cliente->get_retornar_disfraz().begin() + i);
-				}
+					ola2.erase(it2 + i);
+					ola1.erase(it1 + i);
+					cliente->set_lista_retornar_disfraz(ola2);
+					cliente->set_retornar_disfraz(ola1);
 			}
 		}
 	}

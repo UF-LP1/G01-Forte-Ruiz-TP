@@ -1,10 +1,9 @@
 #include "ALQUILER.h"
 
-ALQUILER::ALQUILER(time_t fecha_alquila, time_t fecha_devolucion, time_t fecha_devolvio, ESTADO estado, float senia_pagada)
+ALQUILER::ALQUILER(time_t fecha_alquila, time_t fecha_devolucion, ESTADO estado, float senia_pagada)
 {
 	this->fecha_alquila = fecha_alquila;
 	this->fecha_devolucion = fecha_devolucion;
-	this->fecha_devolvio = fecha_devolvio;
 	this->estado = estado;
 	this->senia_pagada = senia_pagada;
 }
@@ -23,10 +22,6 @@ void ALQUILER::set_fecha_devolucion(time_t fecha_devolucion)
 	this->fecha_devolucion = fecha_devolucion;
 }
 
-void ALQUILER::set_fecha_devolvio(time_t fecha_devolvio)
-{
-	this->fecha_devolvio = fecha_devolvio;
-}
 
 void ALQUILER::set_estado(ESTADO estado)
 {
@@ -48,10 +43,6 @@ time_t ALQUILER::get_fecha_devolucion()
 	return this->fecha_devolucion;
 }
 
-time_t ALQUILER::get_fecha_devolvio()
-{
-	return this->fecha_devolvio;
-}
 
 ESTADO ALQUILER::get_estado()
 {

@@ -130,7 +130,7 @@ void EMPLEADO::entregar_disfraz(CLIENTE* cliente, DISFRACES disfraz, unsigned in
 	time_t f_1 = mktime(&fecha_1);
 	time_t f_2 = mktime(&fecha_2);
 
-	ALQUILER alquiler_disfraz(f_1, f_2, 0, excelente,0.0);//fecha actual+7, fecha actual+17,0
+	ALQUILER alquiler_disfraz(f_1, f_2, excelente,0.0);//fecha actual+7, fecha actual+17,0
 	retornar = cliente->get_retornar_disfraz();
 	retornar.push_back(alquiler_disfraz);
 	cliente->set_retornar_disfraz(retornar);
@@ -187,12 +187,12 @@ void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) //crea un objeto de tipo alquile
 	time_t f_2 = mktime(&fecha_1); //lo vuelvo a cambiar a time t para ponerlo en la funcion
 	
 
-	ALQUILER aux(f_1, f_2, 0, excelente,0.0);//1° fecha de hoy, 2° fecha de hoy + 10 dias
+	ALQUILER aux(f_1, f_2, excelente,0.0);//1° fecha de hoy, 2° fecha de hoy + 10 dias
 	for (int i = 0; i < cant; i++) {
 		list.push_back(aux);
 	}
 	cliente->set_retirar_JPG(list);
-	//delete cliente?
+	//delete cliente
 }
 
 

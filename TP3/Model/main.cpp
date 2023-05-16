@@ -5,8 +5,8 @@
 #include "../Model/EMPLEADO.h"
 #include "../Model/CLIENTE.h"
 #include "../Model/PRODUCTO.h"
-#include "../Model/CARRITO.h"//
-#include "../Model/TICKET.h"//
+#include "../Model/CARRITO.h"
+#include "../Model/TICKET.h"
 #include "../Model/COMESTIBLES.h"
 #include "../Model/UTENSILIOS.h"
 #include "../Model/DISFRACES.h"
@@ -61,7 +61,7 @@ int main() {
 	time_t f_2 = mktime(&fecha_2);
 
 
-	ALQUILER alquiler_prod6(f_1, f_2, 0, malo, 0.0);
+	ALQUILER alquiler_prod6(f_1, f_2, malo, 0.0);
 	vector<ALQUILER> retornar_disfraz2;
 	retornar_disfraz2.push_back(alquiler_prod6);
 	//listas asociadas de devolucion de disfraces del cliente 2
@@ -79,7 +79,14 @@ int main() {
 	vector<JPG> lista_JPG3;
 	lista_JPG3.push_back(imagen);	//lista de impresion del cliente 3
 
-	ALQUILER retirar_imagen(10, 0, 0, excelente,30.0); //hacer lo mismo que con 
+	const time_t fecha_act = (const time_t)time(NULL);
+	struct tm fecha;
+	localtime_s(&fecha, &fecha_act);
+	fecha.tm_mday -= 10;
+	time_t f_a = mktime(&fecha);
+	
+
+	ALQUILER retirar_imagen(f_a, fecha_act, excelente,30.0); //hacer lo mismo que con cliente 2
 	vector<ALQUILER> retirar_JPG3;
 	retirar_JPG3.push_back(retirar_imagen); //lista para retirar impresion del cliente 3
 

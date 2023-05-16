@@ -79,7 +79,7 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 			{
 				if (difftime(fecha_actual, cliente->get_retornar_disfraz()[i].get_fecha_devolucion()) > 0)
 				{
-					t_disfraz1 += 50;//recargo establecido por haberse pasado de la fecha establecida a devolver el disfraz
+					t_disfraz1 += 50;//recargo establecido por timp
 
 				}
 				if (cliente->get_retornar_disfraz()[i].get_estado() == regular)
