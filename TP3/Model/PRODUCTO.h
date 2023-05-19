@@ -7,6 +7,7 @@
 #define _PRODUCTO_H
 #include <string>
 #include "CATEGORIA.h"
+#include "LISTA_PR.h"
 using namespace std;
 class PRODUCTO {
 public: 
@@ -34,10 +35,13 @@ unsigned int get_stock();
 CATEGORIA get_categoria();
 string get_descripcion();
 string get_codigo_producto();
+bool actualizar_stock(int cant);
+
+virtual bool reconocer_producto(LISTA_PR prod);
 
 
 
- ~PRODUCTO();
+ virtual ~PRODUCTO();
 
 protected: 
     CATEGORIA tipo;

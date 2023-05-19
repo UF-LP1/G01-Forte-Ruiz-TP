@@ -24,6 +24,7 @@ void set_talle(TALLE talle);
 
 TALLE get_talle();
 
+virtual bool reconocer_producto(LISTA_PR prod);
 
 ~DISFRACES();
 

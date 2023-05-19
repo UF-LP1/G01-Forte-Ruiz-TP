@@ -66,6 +66,27 @@
 	 return this->codigo_producto;
  }
 
+ bool PRODUCTO::actualizar_stock(int cant)
+ {
+	 if (this->stock >= cant)
+	 {
+		 this->stock -= cant;
+		 return true;
+	 }
+	 else
+		 return false;
+ }
+
+ bool PRODUCTO::reconocer_producto(LISTA_PR prod)
+ {
+	 if (prod.get_alias() == this->alias && actualizar_stock(prod.get_cant()))
+	 {
+		 return true;
+	 }
+	 else
+		 return false;
+ }
+
  
 PRODUCTO::~PRODUCTO() {
 

@@ -25,6 +25,16 @@ time_t COMESTIBLES::get_fecha_vencimiento() {
 	return this->vencimiento;
 }
 
+bool COMESTIBLES::reconocer_producto(LISTA_PR prod)
+{
+	if (prod.get_alias() == this->alias && actualizar_stock(prod.get_cant()))
+	{
+		return true;
+	}
+	else
+		return false;
+}
+
 
 COMESTIBLES::~COMESTIBLES() {
 

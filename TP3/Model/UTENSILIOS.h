@@ -32,6 +32,8 @@ public:
 MATERIAL get_material();
 unsigned int get_unidades();
 TAMANIO get_tamanio();
+
+virtual bool reconocer_producto(LISTA_PR prod);
     
 ~UTENSILIOS();
 

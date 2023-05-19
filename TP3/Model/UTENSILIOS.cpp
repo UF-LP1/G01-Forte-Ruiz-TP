@@ -31,6 +31,17 @@ TAMANIO UTENSILIOS::get_tamanio() {
 	return this->tamanio;
 }
 
+bool UTENSILIOS::reconocer_producto(LISTA_PR prod)
+{
+
+	if (prod.get_alias() == this->alias && actualizar_stock(prod.get_cant()) && *prod.get_material() == this->material && *prod.get_tamanio() == this->tamanio)
+	{
+		return true;
+	}
+	else
+		return false;
+}
+
 UTENSILIOS::~UTENSILIOS() {
 
 }

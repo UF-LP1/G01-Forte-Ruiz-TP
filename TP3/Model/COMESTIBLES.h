@@ -24,6 +24,7 @@ public:
  string get_peso();
  time_t get_fecha_vencimiento();
 
+ virtual bool reconocer_producto(LISTA_PR prod);
 
 ~COMESTIBLES();
 private: 
