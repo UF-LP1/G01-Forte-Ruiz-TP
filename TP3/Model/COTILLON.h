@@ -32,9 +32,18 @@ public:
  ENCARGADO* get_encargado();
  float get_acum_ganancia();
 
- //otros
+ /// <summary>Función que imprime por pantalla dando la bienvenida al cotillón.
+ /// </summary>
 void abrir_local();
+
+/// <summary>Función donde se atiende a los clientes.
+/// <para> Los empleados rotan a medida que atienden a los cliente de uno en uno.</para>
+/// </summary>
 void iniciar_jornada();
+
+/// <summary>Función que anuncia la finalización de la jornada laboral.
+/// <para> Se informa la ganancia del dia y cuántos clientes pasaron por el cotillón.</para>
+/// </summary>
 void cerrar_local();
 
 

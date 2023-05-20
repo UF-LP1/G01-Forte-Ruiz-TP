@@ -1,6 +1,6 @@
 #include "JPG.h"
 #define N 10;
-#define Q 20; //mas grande mas caro
+#define Q 20; //mas grande la impresion, mas cara
 #define P 15;
 
 
@@ -55,9 +55,9 @@ unsigned int JPG::get_alto() {
 
 float JPG::get_senia()//5x5 50x50 100x100, no se puede menos, ni tampoco mas, entre medio sí.
 {
-    float precio_a_seniar = 0; //donde se iran sumando los precios
+    float precio_a_seniar = 0; // se iran sumando los precios
     if (this->ancho * this->alto < 25) {
-        cout << "No se permiten impresiones menores a 5x5 cm" << endl; //!!!!!
+        cout << "No se permiten impresiones menores a 5x5 cm" << endl;
     }
     if (this->ancho * this->alto >= 25 && this->ancho * this->alto <= 2500) {
         precio_a_seniar += N;

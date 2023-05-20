@@ -87,21 +87,22 @@ void COTILLON::iniciar_jornada()
                 if (!lista_clientes[k].get_productos_a_buscar().empty())
                 {
                     lista_empleados[j].buscar_productos_clientes(&lista_clientes[k], this->lista_productos, lista_carrito, lista_info);
+                    //se setea el carrito del cliente
                     lista_clientes[k].get_carrito()->set_lista_cotillon(*lista_carrito);
                     lista_clientes[k].get_carrito()->set_l_info_x_produc(*lista_info);
                 }
                 if (!lista_clientes[k].get_lista_retornar_disfraz().empty())
-                    lista_empleados[j].recibir_disfraz(&(this->lista_clientes[k]), this->lista_productos); //suma stock a los q devuelve el cliente
+                    lista_empleados[j].recibir_disfraz(&(this->lista_clientes[k]), this->lista_productos);
 
                 if (!lista_clientes[k].get_lista_JPG().empty())
                     lista_empleados[j].analizar_l_JPG(&(this->lista_clientes[k]));
 
                 acum += this->encargado->cobrar(&lista_clientes[k], this->lista_productos);
 
-                if (j != this->lista_empleados.size() - 1) //mande 1 a 1
+                if (j != this->lista_empleados.size() - 1) //los empleados van rotando para atender a un cliente cada uno
                     j++;
                 else
-                    j = 0; //lo reinicia para que vuelva a pasar por toda la lista
+                    j = 0; //se reinicia el iterador para que vuelva a pasar por toda la lista de empleados
             }
               
             

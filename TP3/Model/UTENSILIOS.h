@@ -33,6 +33,10 @@ MATERIAL get_material();
 unsigned int get_unidades();
 TAMANIO get_tamanio();
 
+/// <summary>Función que recibe un objeto de tipo LISTA_PR y lo compara con un PRODUCTO de tipo UTENSILIOS.
+/// <para>Devuelve el producto si coinciden todos los parámetros y si el stock es mayor a la cantidad que pide el cliente.</para>
+/// <para>Devuelve nullptr si no coinciden o si no hay suficiente stock.</para>
+/// </summary>
 virtual bool reconocer_producto(LISTA_PR prod);
     
 ~UTENSILIOS();

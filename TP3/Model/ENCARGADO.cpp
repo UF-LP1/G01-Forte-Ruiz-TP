@@ -13,7 +13,7 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 	float t_pr, t_JPG, t_JPG2, t_disfraz1, t_disfraz2, total;
 	t_pr = t_JPG = t_JPG2 = t_disfraz1 = t_disfraz2 = total = 0;
 	
-	// monto lista de productos del dia
+	//Monto de la lista de productos adquiridos del dia
 
 	if (cliente->get_carrito()->get_lista_cotillon().empty() == false)
 	{
@@ -29,7 +29,7 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 		}
 	}
 
-	// monto lista de senias del dia
+	//Monto de la lista de señas de las impresiones encargadas en el dia.
 
 	if (cliente->get_lista_JPG().empty() == false)
 	{
@@ -40,7 +40,7 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 		
 	}
 
-	//monto lista de JPGS que debe retirar en el día y terminar de pagar
+	//Monto de la lista de impresiones que retira y termina de pagar el 70% restante.
 
 	if (cliente->get_retirar_JPG().empty() == false)
 	{
@@ -54,7 +54,7 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 		}
 	}
 
-	//monto disfraces a retornar en el dia que estan en regular o mal estado. Regular: le cobra un 5% del precio del disfraz, y Malo: 10%
+	//Monto de disfraces que retorna en el dia.
 
 	DISFRACES *disfraz;
 
@@ -79,10 +79,8 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 		}
 	}
 
-	//monto disfraces que alquila en el dia
-
-
-
+	//Monto de la lista de disfraces que alquila en el dia.
+	
 	for (int i = 0; i < cliente->get_carrito()->get_lista_cotillon().size(); i++)
 	{
 		if (cliente->get_carrito()->get_l_info_x_produc()[i]->get_alquila() == true)

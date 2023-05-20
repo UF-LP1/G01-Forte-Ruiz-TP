@@ -42,13 +42,12 @@ int main() {
 	LISTA_PR prod5("FIONA", 1, false, &(tl2 = L), nullptr, nullptr, true, disfraz);
 	vector<LISTA_PR*> productos_a_buscar2;
 	productos_a_buscar2.push_back(&prod4);
-	productos_a_buscar2.push_back(&prod5); 
+	productos_a_buscar2.push_back(&prod5); //lista de compra/alquiler del cliente 2
 
-	//lista de compra/alquiler del cliente 2
-
-	LISTA_PR prod6("BURRO",1,false,&(tl3=M), nullptr,nullptr,true, disfraz);//si devuelve, alquila=true??
+	//listas asociadas de devolucion de disfraces del cliente 2
+	LISTA_PR prod6("BURRO",1,false,&(tl3=M), nullptr,nullptr,true, disfraz);//si devuelve, alquila=true
 	vector<LISTA_PR> lista_retornar_disfraz2;
-	lista_retornar_disfraz2.push_back(prod6); 
+	lista_retornar_disfraz2.push_back(prod6); //lista 1
 	
 	const time_t fecha_actual = (const time_t)time(NULL);
 	struct tm fecha_1, fecha_2;
@@ -60,11 +59,10 @@ int main() {
 	time_t f_1 = mktime(&fecha_1);
 	time_t f_2 = mktime(&fecha_2);
 
-
-	ALQUILER alquiler_prod6(f_1, time(NULL), malo, 10.0);//cambio f_2 por time(NULL), se calcularia el precio por la cantidad de diaz que lo tuvo
+	ALQUILER alquiler_prod6(f_1, time(NULL), malo, 10.0);
 	vector<ALQUILER> retornar_disfraz2;
-	retornar_disfraz2.push_back(alquiler_prod6);
-	//listas asociadas de devolucion de disfraces del cliente 2
+	retornar_disfraz2.push_back(alquiler_prod6);//lista 2
+	
 
 	vector<JPG> lista_JPG2; //se incializa y queda vacia
 	vector<ALQUILER> retirar_JPG2; //se incializa y queda vacia
@@ -86,7 +84,7 @@ int main() {
 	time_t f_a = mktime(&fecha);
 	
 
-	ALQUILER retirar_imagen(f_a, fecha_act, excelente,30.0); //hacer lo mismo que con cliente 2
+	ALQUILER retirar_imagen(f_a, fecha_act, excelente,30.0); 
 	vector<ALQUILER> retirar_JPG3;
 	retirar_JPG3.push_back(retirar_imagen); //lista para retirar impresion del cliente 3
 

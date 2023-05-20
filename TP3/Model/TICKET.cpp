@@ -33,6 +33,7 @@ void TICKET::crear_ticket(CLIENTE* cliente, float t_pr, float t_JPG, float t_JPG
 {
 	char str[30];
 	const time_t fecha_actual = (const time_t)time(NULL);
+	this->fecha_transaccion = fecha_actual;
 	struct tm f1;
 	localtime_s(&f1, &fecha_actual);
 	asctime_s(str, sizeof str, &f1);
@@ -75,7 +76,7 @@ void TICKET::crear_ticket(CLIENTE* cliente, float t_pr, float t_JPG, float t_JPG
 			cout << cliente->get_lista_JPG()[i].get_URL() << " ____________ $" << cliente->get_lista_JPG()[i].get_senia() << endl;
 		}
 		vector<JPG> ola = cliente->get_lista_JPG();
-		ola.clear(); // ya cobró, borro la información
+		ola.clear(); // como ya cobró, borro la información
 		cliente->set_lista_JPG(ola);
 		cout << endl << "Monto total de senias pagadas: $" << t_JPG << endl;
 	}

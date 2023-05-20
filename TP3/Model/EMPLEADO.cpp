@@ -41,7 +41,6 @@ string EMPLEADO::get_turno() {
 
 void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> lista_productos, vector<PRODUCTO*>* lista_carrito, vector<LISTA_PR*>* lista_info)
 {
-	//tiene que comparar la lista de compra del cliente con la lista que tiene el cotillon de productos
 	int i;
 	int j = 0;
 	bool b = false;
@@ -51,7 +50,6 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> li
 	COMESTIBLES* ptr;
 	UTENSILIOS* ptr2;
 	DISFRACES* ptr3;
-	// lista con info de cant y bool envolver que consigue finalmente.
 	
 	for (i = 0; i < cliente->get_productos_a_buscar().size(); i++) 
 	{
@@ -89,13 +87,13 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> li
 			{ 
 				lista_final.push_back(lista_productos[j]);
 				l_obtiene.push_back(cliente->get_productos_a_buscar()[i]);
-				break;
+				break;//una vez encontrado el producto, sale del while
 			}
 
 			j++;
 		}
 		b = false;
-		j = 0; //reinicia el iterador para el siguiente producto de lista_productos.		
+		j = 0; //reinicia el iterador para el siguiente PRODUCTO de lista_productos.		
 	}
 			
 
@@ -107,7 +105,7 @@ void EMPLEADO:: buscar_productos_clientes(CLIENTE *cliente, vector<PRODUCTO*> li
 
 void EMPLEADO::entregar_disfraz(CLIENTE* cliente, DISFRACES disfraz, unsigned int cant)
 {
-	vector <ALQUILER> retornar; 
+	 
 	const time_t fecha_actual = (const time_t)time(NULL);
 	struct tm fecha_1;
 	localtime_s(&fecha_1, &fecha_actual);
@@ -115,31 +113,34 @@ void EMPLEADO::entregar_disfraz(CLIENTE* cliente, DISFRACES disfraz, unsigned in
 
 	time_t f_1 = mktime(&fecha_1);
 
-
-
-	ALQUILER alquiler_disfraz(f_1, 0, excelente,disfraz.get_precio()*0.05);//fecha actual+7, fecha actual+17???,precio para reservar (5% del precio total)
+	ALQUILER alquiler_disfraz(f_1, 0, excelente,disfraz.get_precio()*0.05);//1°fecha actual + 7 dias, 2° fecha de devolución no definida
+	
+	//actualiza la lista de tipo ALQUILER de los disfraces a retornar
+	vector <ALQUILER> retornar;
 	retornar = cliente->get_retornar_disfraz();
 	retornar.push_back(alquiler_disfraz);
 	cliente->set_retornar_disfraz(retornar);
-	//que tambien los agregue a lista_retornar disfraz;
+	
+	TALLE t = disfraz.get_talle();
+	
+	LISTA_PR nuevo_disfraz(disfraz.get_alias(), cant, false, &t, nullptr, nullptr, true, disfraz.get_categoria());
+	
+	//actualiza la lista de tipo LISTA_PR de los disfraces a retornar
 	vector <LISTA_PR> retornar_disfraz;
 	retornar_disfraz = cliente->get_lista_retornar_disfraz();
-
-	TALLE t = disfraz.get_talle();
-	LISTA_PR nuevo_disfraz(disfraz.get_alias(), cant, false, &t, nullptr, nullptr, true, disfraz.get_categoria());
 	retornar_disfraz.push_back(nuevo_disfraz);
 	cliente->set_lista_retornar_disfraz(retornar_disfraz);
 
 }
 
-void EMPLEADO::recibir_disfraz(CLIENTE* cliente, vector<PRODUCTO*> lista_cotillon)//recorre la lista de disfraces a retornar y si los reconoce en el sistema actualiza el stock 
+void EMPLEADO::recibir_disfraz(CLIENTE* cliente, vector<PRODUCTO*> lista_cotillon)
 {
 	DISFRACES* ptr= nullptr;
 	int aux;
 	for (int i = 0; i < cliente->get_lista_retornar_disfraz().size(); i++) {
 
 		ptr = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_cotillon);
-		if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <=0) && ptr!=nullptr)
+		if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <=0) && ptr!=nullptr)//me aseguro de no recibir los disfraces alquilados hoy
 		{	
 			aux = ptr->get_stock() + cliente->get_lista_retornar_disfraz()[i].get_cant();
 			ptr->set_stock(aux);
@@ -158,20 +159,20 @@ DISFRACES* EMPLEADO::buscar_disfraz(LISTA_PR disfraz, vector<PRODUCTO*> lista_co
 		if (disfraz.get_alias() == lista_cotillon[i]->get_alias() && *disfraz.get_talle() == static_cast <DISFRACES*>(lista_cotillon[i])->get_talle())
 		{
 			ptr2 = lista_cotillon[i];
-			break;
+			break;//una vez encontrado el producto, sale del ciclo
 		}
 		i++;
-	}//while con break, una vez encontrado el producto sale del ciclo
+	}
 	if (ptr2 == nullptr)
 		return nullptr; //no se encontró el disfraz 
 	else
 	{
 		ptr = static_cast<DISFRACES*> (ptr2);
-		return ptr; // 
+		return ptr; //devuelve el disfraz
 	}
 }
 
-void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) //crea un objeto de tipo alquiler y se lo asigna a cliente para retirar 
+void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) 
 {
 	int cant = cliente->get_lista_JPG().size();
 	vector <ALQUILER> list; 
@@ -184,12 +185,18 @@ void EMPLEADO::analizar_l_JPG(CLIENTE* cliente) //crea un objeto de tipo alquile
 	fecha_1.tm_mday += 10; //agrego 10 dias
 	time_t f_2 = mktime(&fecha_1); //lo vuelvo a cambiar a time_t para ponerlo en la funcion
 	
+	float senia = 0;
 
 	ALQUILER aux(f_1, f_2, excelente,0.0);//1° fecha de hoy, 2° fecha de hoy + 10 dias
 	for (int i = 0; i < cant; i++) {
-		list.push_back(aux);
+		senia = cliente->get_lista_JPG()[i].get_senia();
+		if (senia != 0) //si la senia es = 0 es porque no se puede imprimir debido a las dimensiones de la imagen
+		{
+			aux.set_senia_pagada(senia);
+			list.push_back(aux);
+		}
 	}
-	cliente->set_retirar_JPG(list);
+	cliente->set_retirar_JPG(list); //actualizo la lista de impresiones a retirar
 	
 }
 

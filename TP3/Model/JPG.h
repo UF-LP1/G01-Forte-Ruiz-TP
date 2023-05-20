@@ -26,7 +26,11 @@ void set_a_color(bool a_color);
  bool get_a_color(); 
  unsigned int get_ancho();    
  unsigned int get_alto();
-float get_senia();
+
+/// <summary>Función que calcula y devuelve el 30% del precio de la impresión.
+/// <para> El precio es en función de los parámetros de la imagen a imprimir: de su alto, ancho y color.</para>
+/// </summary>
+ float get_senia();
     
 private: 
     string URL;
