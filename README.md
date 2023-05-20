@@ -8,5 +8,7 @@ El cliente llega a nuestro cotillón "Cotilandia" con 5 listas.
  La lista  vector<ALQUILER> retirar_JPG son aquellas impresiones que quiere retirar.
  
  Por último, la lista vector<LISTA_PR> lista_retornar_disfraz y la lista vector<ALQUILER> retornar_disfraz están asociadas y corresponden al alquiler de disfraces previos y que quiere retornar.
+ 
+ Los empleados procesarán estas listas y el encargado del cotillón cobrará los servicios.
   
   Todos los métodos implementados están documentados.
