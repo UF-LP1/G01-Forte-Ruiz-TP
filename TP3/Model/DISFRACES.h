@@ -8,6 +8,8 @@
 
 #include "PRODUCTO.h"
 #include "TALLE.h"
+#include "ALQUILER.h"
+#include "ctime"
 
 
 class DISFRACES: public PRODUCTO {
@@ -25,6 +27,7 @@ void set_talle(TALLE talle);
 TALLE get_talle();
 
 virtual bool reconocer_producto(LISTA_PR prod);
+float calcular_precio(ALQUILER prod);
 
 ~DISFRACES();
 

@@ -27,7 +27,7 @@ time_t COMESTIBLES::get_fecha_vencimiento() {
 
 bool COMESTIBLES::reconocer_producto(LISTA_PR prod)
 {
-	if (prod.get_alias() == this->alias && actualizar_stock(prod.get_cant()))
+	if (prod.get_alias() == this->alias && actualizar_stock(prod.get_cant()) && difftime(this->vencimiento, time(NULL)) >= 0)
 	{
 		return true;
 	}

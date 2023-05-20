@@ -61,7 +61,7 @@ int main() {
 	time_t f_2 = mktime(&fecha_2);
 
 
-	ALQUILER alquiler_prod6(f_1, f_2, malo, 0.0);
+	ALQUILER alquiler_prod6(f_1, time(NULL), malo, 10.0);//cambio f_2 por time(NULL), se calcularia el precio por la cantidad de diaz que lo tuvo
 	vector<ALQUILER> retornar_disfraz2;
 	retornar_disfraz2.push_back(alquiler_prod6);
 	//listas asociadas de devolucion de disfraces del cliente 2
@@ -107,9 +107,16 @@ int main() {
 	lista_clientes.push_back(cliente2);
 
 	//-------------------------- LISTA PRODUCTOS --------------------
+
+	const time_t fecha_act1 = (const time_t)time(NULL);
+	struct tm fecha1;
+	localtime_s(&fecha1, &fecha_act1);
+	fecha1.tm_mday += 10;
+	time_t f_a1 = mktime(&fecha1);
+
 	vector <PRODUCTO*> lista_productos;
 	PRODUCTO producto1(cotillon, 1, 100.0, "1", "mascara", "");
-	COMESTIBLES producto2(comestible, 1, 100.0, "2", "fondant", "", "125 gr", 0);
+	COMESTIBLES producto2(comestible, 1, 100.0, "2", "fondant", "", "125 gr", f_a1);
 	UTENSILIOS producto3(utensilio, 1, 100.0, "3", "cuchillos", "", plastico, 20, generico);
 	lista_productos.push_back(&producto1);
 	lista_productos.push_back(&producto2);
@@ -140,7 +147,6 @@ int main() {
 	cotillon.abrir_local();
 	cotillon.iniciar_jornada();
 	cotillon.cerrar_local();
-
 	
 	return 0;
 }

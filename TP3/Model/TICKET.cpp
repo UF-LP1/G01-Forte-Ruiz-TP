@@ -104,7 +104,7 @@ void TICKET::crear_ticket(CLIENTE* cliente, float t_pr, float t_JPG, float t_JPG
 
 	if (cliente->get_retornar_disfraz().empty() == false)
 	{
-		cout << endl << "Recargo por retorno de disfraces en regular o mal estado: $";
+		cout << endl << "Retorno de disfraces: $";
 		cout << t_disfraz1 << endl;
 		for (int i = 0; i < cliente->get_retornar_disfraz().size(); i++)
 		{
@@ -127,7 +127,7 @@ void TICKET::crear_ticket(CLIENTE* cliente, float t_pr, float t_JPG, float t_JPG
 			if (cliente->get_carrito()->get_l_info_x_produc()[i]->get_alquila() == true)
 			{
 			
-				cout << cliente->get_carrito()->get_l_info_x_produc()[i]->get_alias() << "____________ $" << cliente->get_carrito()->get_lista_cotillon()[i]->get_precio() << "x" << cliente->get_carrito()->get_l_info_x_produc()[i]->get_cant() << endl;;
+				cout << cliente->get_carrito()->get_l_info_x_produc()[i]->get_alias() << "____________ $" << cliente->get_carrito()->get_lista_cotillon()[i]->get_precio()*0.05 << "x" << cliente->get_carrito()->get_l_info_x_produc()[i]->get_cant() << endl;//imprime la senia para reservar el disfraz
 			}
 		}
 		cout << "Monto total del alquiler de disfraces: $" << t_disfraz2 << endl;

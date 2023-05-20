@@ -59,30 +59,22 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 	DISFRACES *disfraz;
 
 	const time_t fecha_actual = (const time_t)time(NULL);
+	struct tm fecha_1;
+	localtime_s(&fecha_1, &fecha_actual);
+	fecha_1.tm_mday += 7;
+	time_t f_1 = mktime(&fecha_1);
 
 
 	if (cliente->get_retornar_disfraz().empty() == false)
 	{
 		for (int i = 0; i < cliente->get_retornar_disfraz().size(); i++)
 		{
-  			if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_devolucion(), time(NULL) <= 0))
+  			if (difftime(cliente->get_retornar_disfraz()[i].get_fecha_alquila(), f_1) < 0)//me aseguro de procesar los disfraces que no fueron alquilados hoy
 			{
-				if (difftime(fecha_actual, cliente->get_retornar_disfraz()[i].get_fecha_devolucion()) > 0)
-				{
-					t_disfraz1 += 50;//recargo establecido por timp
-
-				}
-				if (cliente->get_retornar_disfraz()[i].get_estado() == regular)
-				{
-					disfraz = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_productos);
-					t_disfraz1 += disfraz->get_precio() * 0.05; //le cobro un 5% si lo trae regular
-
-				}
-				if (cliente->get_retornar_disfraz()[i].get_estado() == malo)
-				{
-					disfraz = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_productos);
-					t_disfraz1 += disfraz->get_precio() * 0.1;
-				}
+				disfraz = buscar_disfraz(cliente->get_lista_retornar_disfraz()[i], lista_productos);
+				if(disfraz != nullptr) //si no lo encuentra, no lo cobra
+					t_disfraz1 = disfraz->calcular_precio(cliente->get_retornar_disfraz()[i]);
+				
 			}
 		}
 	}
@@ -95,7 +87,7 @@ float ENCARGADO::cobrar(CLIENTE* cliente, vector<PRODUCTO*> lista_productos) //c
 	{
 		if (cliente->get_carrito()->get_l_info_x_produc()[i]->get_alquila() == true)
 		{
-			t_disfraz2 += cliente->get_carrito()->get_lista_cotillon()[i]->get_precio()*0.01*10; // 10 dias que se pactan (generico) para devolver
+			t_disfraz2 += cliente->get_carrito()->get_lista_cotillon()[i]->get_precio()*0.05; // precio que se paga por reservar el disfraz
 		}
 	}
 	total = t_pr + t_JPG + t_JPG2 + t_disfraz1 + t_disfraz2;

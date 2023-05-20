@@ -31,10 +31,27 @@
 		
  }
 
+ float DISFRACES::calcular_precio(ALQUILER prod)
+ {
+	 float precio = 0;
+	
+		 precio += int(difftime(time(NULL), prod.get_fecha_alquila())/86400)*this->precio*0.025; //por dia es el 2,5% del precio total
 
- //Void DISFRACES::tiempo_alquiler(time_t fecha_recibio, time_t fecha_devolvio)
+	 if (prod.get_estado() == regular)
+	 {
+		 
+		 precio += this->precio * 0.05; //le cobro un 5% extra si lo trae regular
 
-// bool DISFRACES::cargo_extra(ESTADO estado) 
+	 }
+	 if (prod.get_estado() == malo)
+	 {
+
+		 precio += this->precio * 0.1; //le cobro un 10% extra si el estado del disfraz es malo
+	 }
+	 return precio;
+ }
+
+
 
  DISFRACES::~DISFRACES() {
 
